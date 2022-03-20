@@ -2279,5 +2279,4 @@ function widthFunctions(e) {
 		});
 		
 	}
-
 }

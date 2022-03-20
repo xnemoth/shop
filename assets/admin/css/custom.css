@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+
+/* Custom css for header */
+body {
+	background: #ffedd4 !important;
+	color: #ffedd4 !important;
+	border: none;
+	font-family: "Poppins", sans-serif !important;
+	font-weight: 400;
+}
+
+.navbar .brand {
+	display: block;
+	float: left;
+	padding: 10px 0px 10px !important;
+	margin-left: -30px !important;
+	font-size: 17px;
+	font-weight: normal;
+	color: white ;
+    text-shadow: none;
+}
+
+.navbar-inner{
+    background: rgb(101, 111, 122) !important;
+    text-shadow: none;
+    border: none !important;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color:rgb(101, 111, 122) !important;
+}
+
+.dropdown-menu {
+    background-color:rgb(101, 111, 122) !important;
+    border: none !important;
+}
+
+.dropdown-menu li a {
+	color: #fff;
+}
+
+#breadcrumb-custom{
+	background: #2d89ef !important;
+}
+
+/* Sidebar-left */
+
+.navtab-li-custom{ 
+	border-bottom: 2px solid white !important;
+}
+
+.navtab-li-custom:hover{
+	transform: translateX(10px);
+}
+
+.nav-tabs.nav-stacked > li > a,
+.nav-tabs.nav-stacked > li > ul > li > a{
+	color: whitesmoke !important;
+}
+
+.nav-tabs.nav-stacked > li:hover ,
+.nav-tabs.nav-stacked > li > a:hover,
+.nav-tabs.nav-stacked > li > ul > li > a:hover{
+	background-color: #2d89ef !important;
+	color: white !important;
+}
+
+#sidebar-left {
+	background: rgb(101, 111, 122) !important;
+}
+
+/* footer */
+
+footer{
+	background:rgb(101, 111, 122) !important;
+}
+
+/*  login admin page */
+
+.admin-validate p{
+	text-align: center !important;
+}
+
+.login-box.login-box-custom{
+	border: 1px solid goldenrod !important;
+	-webkit-box-shadow: 0px 0px 0px 5px rgb(218 165 32 / 25%) !important;
+	border-radius: 7px;
+}
+
+.input-prepend.login-admin-custom{
+	border: 0px !important;
+}
+
+.add-on.login-admin-custom{
+	background: goldenrod !important;
+	border: 1px solid goldenrod !important;
+	border-top-left-radius: 7px !important;
+	border-bottom-left-radius: 7px !important;
+}
+
+.custom-login-input{
+	border: 1px solid goldenrod !important;
+	border-left: none !important;
+	border-top-right-radius: 7px !important;
+	border-bottom-right-radius: 7px !important;
+}
+
+.login-box .add-on i {
+	opacity: 1 !important;
+}
+
+#submit-login-custom {
+	margin: 0px;
+	width: 100%;
+	 display: flex;
+	 justify-content: center;
+}
+
+.admin-login-check-custom{ 
+	border-radius: 7px !important;
+}

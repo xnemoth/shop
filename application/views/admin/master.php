@@ -20,6 +20,7 @@
     <link id="bootstrap-style" href="<?php echo base_url() ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/admin/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link id="base-style" href="<?php echo base_url() ?>assets/admin/css/style.css" rel="stylesheet">
+    <link id="base-style" href="<?php echo base_url() ?>assets/admin/css/custom.css" rel="stylesheet">
     <link id="base-style-responsive" href="<?php echo base_url() ?>assets/admin/css/style-responsive.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
     <!-- end: CSS -->
@@ -35,12 +36,9 @@
     <div class="navbar">
         <div class="navbar-inner">
             <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="<?php echo base_url('dashboard') ?>"><span>Ecommerce Admin Panel</span></a>
+                <div class="brand" style="width: 85%">
+                    <marquee scrollAmount="8">Hôm nay ngày <?php echo date("d"); ?> tháng <?php echo date("m"); ?> năm <?php echo date("Y"); ?></marquee>
+                </div>
 
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">
@@ -48,15 +46,12 @@
 
                         <li class="dropdown">
                             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="halflings-icon white user"></i> <?php echo $this->session->userdata('user_name'); ?>
+                                <i class="halflings-icon white user"></i> Xin chào <?php echo $this->session->userdata('user_name'); ?>
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="dropdown-menu-title">
-                                    <span>Account Settings</span>
-                                </li>
-                                <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-                                <li><a href="<?php echo base_url('logout') ?>"><i class="halflings-icon off"></i> Logout</a></li>
+                                <li><a href="<?= base_url() ?>"><i class="halflings-icon white user" target="_blank"></i> Trang web</a></li>
+                                <li><a href="<?php echo base_url('logout') ?>"><i class="halflings-icon white off"></i> Đăng xuất</a></li>
                             </ul>
                         </li>
                         <!-- end: User Dropdown -->
@@ -76,18 +71,18 @@
             <div id="sidebar-left" class="span2">
                 <div class="nav-collapse sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked main-menu">
-                        <li><a href="<?php echo base_url('dashboard') ?>"><i class="icon-dashboard"></i><span class="hidden-tablet"> Dashboard</span></a></li>
-                        <li><a href="<?php echo base_url('add/category') ?>"><i class="icon-th"></i><span class="hidden-tablet"> Add Category</span></a></li>
-                        <li><a href="<?php echo base_url('manage/category') ?>"><i class="icon-tasks"></i><span class="hidden-tablet"> Manage Category</span></a></li>
-                        <li><a href="<?php echo base_url('add/brand') ?>"><i class="icon-edit"></i><span class="hidden-tablet"> Add Brand</span></a></li>
-                        <li><a href="<?php echo base_url('manage/brand') ?>"><i class="icon-list-alt"></i><span class="hidden-tablet"> Manage Brand</span></a></li>
-                        <li><a href="<?php echo base_url('add/product') ?>"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Add Product</span></a></li>
-                        <li><a href="<?php echo base_url('manage/product') ?>"><i class="icon-eye-open"></i><span class="hidden-tablet"> Manage Product</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('dashboard') ?>"><i class="icon-dashboard"></i><span class="hidden-tablet"> Thông tin</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('add/category') ?>"><i class="icon-th"></i><span class="hidden-tablet"> Thêm nhóm hàng</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/category') ?>"><i class="icon-tasks"></i><span class="hidden-tablet"> Nhóm hàng</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('add/brand') ?>"><i class="icon-edit"></i><span class="hidden-tablet"> Thêm nhãn hàng</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/brand') ?>"><i class="icon-list-alt"></i><span class="hidden-tablet"> Nhãn hàng</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('add/product') ?>"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Thêm sản phẩm</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/product') ?>"><i class="icon-eye-open"></i><span class="hidden-tablet"> Sản phẩm</span></a></li>
 
-                        <li><a href="<?php echo base_url('add/slider') ?>"><i class="icon-font"></i><span class="hidden-tablet"> Add Slider</span></a></li>
-                        <li><a href="<?php echo base_url('manage/slider') ?>"><i class="icon-picture"></i><span class="hidden-tablet"> Manage Slider</span></a></li>
-                        <li><a href="<?php echo base_url('theme/option'); ?>"><i class="icon-align-justify"></i><span class="hidden-tablet"> Theme Option</span></a></li>
-                        <li><a href="<?php echo base_url('manage/order'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet"> Manage Order</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('add/slider') ?>"><i class="icon-font"></i><span class="hidden-tablet"> Thêm banner</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/slider') ?>"><i class="icon-picture"></i><span class="hidden-tablet"> Quản lý banner</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/order'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet"> Đơn hàng</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('theme/option'); ?>"><i class="icon-align-justify"></i><span class="hidden-tablet"> Cài đặt</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -127,7 +122,7 @@
 
         <p>
             <center>
-                <span>&copy; <?php echo date("Y"); ?> Ecommerce CodeIgniter - Bootstrap Template By <a href="http://jiji262.github.io/Bootstrap_Metro_Dashboard/" style="color:white;" alt="Bootstrap_Metro_Dashboard">Bootstrap Metro Dashboard</a></span>
+                <span>&copy; Nemoth </span>
 
         </p>
         </center>

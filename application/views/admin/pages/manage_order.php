@@ -2,7 +2,7 @@
 <div id="content" class="span10">
 
 
-    <ul class="breadcrumb">
+    <ul id="breadcrumb-custom" class="breadcrumb">
         <li>
             <i class="icon-home"></i>
             <a href="<?php echo base_url('dashboard')?>">Home</a> 

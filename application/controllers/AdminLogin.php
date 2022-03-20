@@ -19,8 +19,8 @@ class AdminLogin extends CI_Controller
     public function admin_login_check()
     {
 
-        $this->form_validation->set_rules('user_email', 'User Email', 'required|valid_email');
-        $this->form_validation->set_rules('user_password', 'User Password', 'required');
+        $this->form_validation->set_rules('user_email', 'admin email', 'required|valid_email');
+        $this->form_validation->set_rules('user_password', 'password', 'required');
 
         if ($this->form_validation->run() == true) {
             $data                  = array();
@@ -35,7 +35,7 @@ class AdminLogin extends CI_Controller
                 $this->session->set_userdata('user_id', $result->user_id);
                 redirect('dashboard');
             } else {
-                $this->session->set_flashdata('message', 'Your Email Or Password Does Not Match');
+                $this->session->set_flashdata('message', 'Tài khoản hoặc mật khẩu không đúng, xin vui lòng thử lại!');
                 redirect('admin');
             }
         } else {
