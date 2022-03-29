@@ -34,11 +34,13 @@
         </div>
         <div class="suggest-box">
             <hr style="color: #1a94ff;background-color: #1a94ff;height: 5px;margin-bottom:7px;">
-            <span style="color: blue;font-size: 23;font-weight: bold;margin-top: 5px;">Sản phẩm gợi ý</span>
+            <div class="card bg-primary text-white">
+                <div class="card-body" style="font-weight: bold;"><h2 class="content-product-block"><ion-icon name="star-outline"></ion-icon> Sản phẩm gợi ý</h2></div>
+            </div>
             <?php
             $popular_posts = $this->web_model->get_all_popular_posts();
-    
-            $popular_posts_chunk = array_chunk($popular_posts, 2);
+
+            $popular_posts_chunk = array_chunk($popular_posts, 4);
             foreach ($popular_posts_chunk as $single_popular_chunk) {
             ?>
                 <div class="section group">
@@ -46,11 +48,17 @@
                         <div class="listview_1_of_2 images_1_of_2">
                             <div class="listimg listimg_2_of_1">
                                 <a href="<?php echo base_url('single/' . $single_popular->product_id); ?>"> <img src="<?php echo base_url() ?>uploads/<?php echo $single_popular->product_image ?>" alt="" /></a>
+                                <span class="button btn-add-suggest"><button class="btn btn-primary add-cart-suggest"><a href="<?php echo base_url('single/' . $single_popular->product_id); ?>">Mua</a></button></span>
                             </div>
                             <div class="text list_2_of_1">
-                                <h2><?php echo word_limiter($single_popular->product_title, 2) ?></h2>
-                                <p><?php echo word_limiter($single_popular->product_short_description, 5) ?></p>
-                                <div class="button"><span><a href="<?php echo base_url('single/' . $single_popular->product_id); ?>">Thêm vào giỏ hàng</a></span></div>
+                                <h1><?php echo word_limiter($single_popular->product_title, 2) ?></h1>
+                                <h1 style="font-size: 14px;"><?php echo word_limiter($single_popular->product_price, 5) ?> ₫ </h1>
+                                <h2 style="font-size: 13px;">Còn lại</h2>
+                                    <div class="progress" style="text-align: center !important;">
+                                        <div class="progress-bar bg-warning" style="width:<?php echo word_limiter($single_popular->product_quantity, 5) / 1 ?>%;">
+                                            <?php echo word_limiter($single_popular->product_quantity, 5) / 1 ?>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     <?php } ?>

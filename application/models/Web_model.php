@@ -9,10 +9,10 @@ class Web_Model extends CI_Model
         $this->db->from('tbl_product');
         $this->db->join('tbl_category', 'tbl_category.id=tbl_product.product_category');
         $this->db->join('tbl_brand', 'tbl_brand.brand_id=tbl_product.product_brand');
-        $this->db->order_by('tbl_product.product_id', 'DESC');
+        $this->db->order_by('tbl_product.product_id', 'ASC');
         $this->db->where('tbl_product.publication_status', 1);
         $this->db->where('product_feature', 1);
-        $this->db->limit(4);
+        $this->db->limit(8);
         $info = $this->db->get();
         return $info->result();
     }
@@ -25,7 +25,7 @@ class Web_Model extends CI_Model
         $this->db->join('tbl_brand', 'tbl_brand.brand_id=tbl_product.product_brand');
         $this->db->order_by('tbl_product.product_id', 'DESC');
         $this->db->where('tbl_product.publication_status', 1);
-        $this->db->limit(4);
+        $this->db->limit(8);
         $info = $this->db->get();
         return $info->result();
     }

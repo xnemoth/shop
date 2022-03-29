@@ -233,8 +233,8 @@ class Web extends CI_Controller
         $data['customer_email']    = $this->input->post('customer_email');
         $data['customer_password'] = md5($this->input->post('customer_password'));
 
-        $this->form_validation->set_rules('customer_email', 'Customer Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('customer_password', 'Customer Password', 'trim|required');
+        $this->form_validation->set_rules('customer_email', 'email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('customer_password', 'mật khẩu', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->web_model->get_customer_info($data);
@@ -243,7 +243,7 @@ class Web extends CI_Controller
                 $this->session->set_userdata('customer_email', $result->customer_email);
                 redirect('customer/shipping');
             } else {
-                $this->session->set_flashdata('messagelogin', 'Customer Login Fail');
+                $this->session->set_flashdata('messagelogin', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('user_form');
             }
         } else {
@@ -264,13 +264,13 @@ class Web extends CI_Controller
         $data['customer_phone']    = $this->input->post('customer_phone');
         $data['customer_zipcode']  = $this->input->post('customer_zipcode');
 
-        $this->form_validation->set_rules('customer_name', 'Customer Name', 'trim|required');
-        $this->form_validation->set_rules('customer_email', 'Customer Email', 'trim|required|valid_email|is_unique[tbl_customer.customer_email]');
-        $this->form_validation->set_rules('customer_password', 'Customer Password', 'trim|required');
-        $this->form_validation->set_rules('customer_address', 'Customer Address', 'trim|required');
+        $this->form_validation->set_rules('customer_name', 'tên người dùng', 'trim|required');
+        $this->form_validation->set_rules('customer_email', 'email', 'trim|required|valid_email|is_unique[tbl_customer.customer_email]');
+        $this->form_validation->set_rules('customer_password', 'mật khẩu', 'trim|required');
+        $this->form_validation->set_rules('customer_address', 'địa chỉ', 'trim|required');
         $this->form_validation->set_rules('customer_city', 'Customer City', 'trim|required');
         $this->form_validation->set_rules('customer_country', 'Customer Country', 'trim|required');
-        $this->form_validation->set_rules('customer_phone', 'Customer Phone', 'trim|required');
+        $this->form_validation->set_rules('customer_phone', 'số điện thoại', 'trim|required');
         $this->form_validation->set_rules('customer_zipcode', 'Customer Zipcode', 'trim|required');
 
         if ($this->form_validation->run() == true) {
@@ -280,7 +280,7 @@ class Web extends CI_Controller
                 $this->session->set_userdata('customer_id', $result);
                 redirect('customer/shipping');
             } else {
-                $this->session->set_flashdata('message', 'Customer Shipping Fail');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('user_form');
             }
         } else {
@@ -308,12 +308,12 @@ class Web extends CI_Controller
         $data['shipping_phone']   = $this->input->post('shipping_phone');
         $data['shipping_zipcode'] = $this->input->post('shipping_zipcode');
 
-        $this->form_validation->set_rules('shipping_name', 'Shipping Name', 'trim|required');
-        $this->form_validation->set_rules('shipping_email', 'Shipping Email', 'trim|required|valid_email|is_unique[tbl_shipping.shipping_email]');
-        $this->form_validation->set_rules('shipping_address', 'Shipping Address', 'trim|required');
+        $this->form_validation->set_rules('shipping_name', 'tên người nhận', 'trim|required');
+        $this->form_validation->set_rules('shipping_email', 'email', 'trim|required|valid_email|is_unique[tbl_shipping.shipping_email]');
+        $this->form_validation->set_rules('shipping_address', 'địa chỉ nhận hàng', 'trim|required');
         $this->form_validation->set_rules('shipping_city', 'Shipping City', 'trim|required');
         $this->form_validation->set_rules('shipping_country', 'Shipping Country', 'trim|required');
-        $this->form_validation->set_rules('shipping_phone', 'Shipping Phone', 'trim|required');
+        $this->form_validation->set_rules('shipping_phone', 'số điện thoại', 'trim|required');
         $this->form_validation->set_rules('shipping_zipcode', 'Shipping Zipcode', 'trim|required');
 
         if ($this->form_validation->run() == true) {
@@ -322,7 +322,7 @@ class Web extends CI_Controller
             if ($result) {
                 redirect('checkout');
             } else {
-                $this->session->set_flashdata('message', 'Customer Shipping Fail');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('customer/shipping');
             }
         } else {

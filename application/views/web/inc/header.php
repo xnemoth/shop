@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 <head>
-    <title>Cửa hàng linh kiện</title>
+    <title>Nemoth's shop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="<?php echo base_url() ?>assets/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -17,6 +17,8 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function($) {
             $('#dc_mega-menu-orange').dcMegaMenu({
@@ -39,7 +41,7 @@
                                         echo "active";
                                     }
                                     ?>" style="--clr:#1a94ff;">
-                    <a href="<?php echo base_url('/'); ?>">
+                    <a href="<?php echo base_url('/'); ?>" title="Trang chủ">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -51,11 +53,34 @@
                                     echo "active";
                                 }
                                 ?>" style="--clr:#1a94ff;">
-                    <a href="<?php echo base_url('/product'); ?>">
+                    <a href="<?php echo base_url('/product'); ?>" title="Sản phẩm">
                         <span class="icon">
-                            <ion-icon name="person-outline"></ion-icon>
+                            <ion-icon name="cube"></ion-icon>
                         </span>
-                        <span class="text">Danh mục</span>
+                        <span class="text">Sản phẩm</span>
+                    </a>
+                </li>
+                <?php
+                $customer_id = $this->session->userdata('customer_id');
+                if ($customer_id) {
+                ?>
+                    <li class="list" style="--clr:#1a94ff;">
+                        <div>
+                            <a href="#" title="Tài khoản">
+                                <span class="icon">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                </span>
+                                <span class="text">Tài khoản</span>
+                            </a>
+                        </div>
+                    </li>
+                <?php } ?>
+                <li class="list" style="--clr:#1a94ff;">
+                    <a href="<?php echo base_url('cart'); ?>" title="Xem giỏ hàng" rel="nofollow">
+                        <span class="icon">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </span>
+                        <span class="text">Giỏ hàng<span class="no_product badge bg-primary">&nbsp; <?php echo $this->cart->total_items(); ?></span></span>
                     </a>
                 </li>
                 <li class="list" style="--clr:#1a94ff;">
@@ -64,9 +89,9 @@
                     if ($customer_id) {
                     ?>
                         <div>
-                            <a href="<?php echo base_url('/customer/logout'); ?>">
+                            <a href="<?php echo base_url('/customer/logout'); ?>" title="Đăng xuất">
                                 <span class="icon">
-                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                    <ion-icon name="log-out"></ion-icon>
                                 </span>
                                 <span class="text">Đăng xuất</span>
                             </a>
@@ -74,9 +99,9 @@
                     <?php } else {
                     ?>
                         <div>
-                            <a href="<?php echo base_url('/customer/login'); ?>">
+                            <a href="<?php echo base_url('/customer/login'); ?>" title="Đăng nhập">
                                 <span class="icon">
-                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                    <ion-icon name="log-in"></ion-icon>
                                 </span>
                                 <span class="text">Đăng nhập</span>
                             </a>
@@ -84,14 +109,6 @@
                     <?php
                     }
                     ?>
-                </li>
-                <li class="list" style="--clr:#1a94ff;">
-                    <a href="<?php echo base_url('cart'); ?>" title="Xem giỏ hàng" rel="nofollow">
-                        <span class="icon">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </span>
-                        <span class="text">Giỏ hàng <span class="no_product">(<?php echo $this->cart->total_items(); ?>)</span></span>
-                    </a>
                 </li>
             </ul>
         </div>
