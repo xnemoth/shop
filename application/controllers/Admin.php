@@ -10,6 +10,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->get_user();
     }
+    
     public function index()
     {
         $data                = array();

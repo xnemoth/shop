@@ -22,47 +22,25 @@ class Themeoption extends CI_Controller
     {
 
         $data                          = array();
-        $data['site_copyright']        = $this->input->post('site_copyright');
-        $data['site_contact_num1']     = $this->input->post('site_contact_num1');
-        $data['site_contact_num2']     = $this->input->post('site_contact_num2');
+        $data['site_contact_num']     = $this->input->post('site_contact_num');
         $data['site_facebook_link']    = $this->input->post('site_facebook_link');
-        $data['site_twitter_link']     = $this->input->post('site_twitter_link');
-        $data['site_google_plus_link'] = $this->input->post('site_google_plus_link');
+        $data['site_github_link']     = $this->input->post('site_github_link');
         $data['site_email_link']       = $this->input->post('site_email_link');
-        $data['contact_title']         = $this->input->post('contact_title');
-        $data['contact_subtitle']      = $this->input->post('contact_subtitle');
-        $data['contact_description']   = $this->input->post('contact_description');
-        $data['company_location']      = $this->input->post('company_location');
-        $data['company_number']        = $this->input->post('company_number');
-        $data['company_email']         = $this->input->post('company_email');
-        $data['company_facebook']      = $this->input->post('company_facebook');
-        $data['company_twitter']       = $this->input->post('company_twitter');
 
         $delete_logo    = $this->input->post('delete_logo');
         $delete_favicon = $this->input->post('delete_favicon');
 
-        $this->form_validation->set_rules('site_copyright', 'Product Title', 'trim|required');
-        $this->form_validation->set_rules('site_contact_num1', 'Product Short Description', 'trim|required');
-        $this->form_validation->set_rules('site_contact_num2', 'Product Long Status', 'trim|required');
-        $this->form_validation->set_rules('site_facebook_link', 'Product Price', 'trim|required');
-        $this->form_validation->set_rules('site_twitter_link', 'Product Quantity', 'trim|required');
-        $this->form_validation->set_rules('site_google_plus_link', 'Product Category', 'trim|required');
-        $this->form_validation->set_rules('site_email_link', 'Product Brand', 'trim|required');
-        $this->form_validation->set_rules('contact_title', 'Product Feature', 'trim');
-        $this->form_validation->set_rules('contact_subtitle', 'Publication Status', 'trim|required');
-        $this->form_validation->set_rules('contact_description', 'Publication Status', 'trim|required');
-        $this->form_validation->set_rules('company_location', 'Publication Status', 'trim|required');
-        $this->form_validation->set_rules('company_number', 'Publication Status', 'trim|required');
-        $this->form_validation->set_rules('company_email', 'Publication Status', 'trim|required');
-        $this->form_validation->set_rules('company_facebook', 'Publication Status', 'trim|required');
-        $this->form_validation->set_rules('company_twitter', 'Publication Status', 'trim|required');
+        $this->form_validation->set_rules('site_contact_num', '', 'trim|required');
+        $this->form_validation->set_rules('site_facebook_link', '', 'trim|required');
+        $this->form_validation->set_rules('site_github_link', '', 'trim|required');
+        $this->form_validation->set_rules('site_email_link', '', 'trim|required');
 
         if (!empty($_FILES['site_logo']['name'])) {
             $config['upload_path']   = './uploads/';
             $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']      = 555;
-            $config['max_width']     = 555;
-            $config['max_height']    = 555;
+            $config['max_size']      = 666;
+            $config['max_width']     = 666;
+            $config['max_height']    = 666;
 
             $this->upload->initialize($config);
 
@@ -102,10 +80,10 @@ class Themeoption extends CI_Controller
             $result = $this->option_model->save_option_info($data);
 
             if ($result) {
-                $this->session->set_flashdata('message', 'Option Updated Sucessfully');
+                $this->session->set_flashdata('message', 'Cập nhật thành công');
                 redirect('theme/option');
             } else {
-                $this->session->set_flashdata('message', 'Option Updated Failed');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('theme/option');
             }
         } else {

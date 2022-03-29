@@ -42,16 +42,16 @@ class Product extends CI_Controller
         $data['publication_status']        = $this->input->post('publication_status');
         $data['product_author']            = $this->session->userdata('user_id');
 
-        $this->form_validation->set_rules('product_title', 'Product Title', 'trim|required');
-        $this->form_validation->set_rules('product_short_description', 'Product Short Description', 'trim|required');
-        $this->form_validation->set_rules('product_long_description', 'Product Long Status', 'trim|required');
+        $this->form_validation->set_rules('product_title', 'tên sản phẩm', 'trim|required');
+        $this->form_validation->set_rules('product_short_description', 'mô tả chung', 'trim|required');
+        $this->form_validation->set_rules('product_long_description', 'chi tiết sản phẩm', 'trim|required');
         // $this->form_validation->set_rules('product_image', 'Product Image', 'trim|required');
-        $this->form_validation->set_rules('product_price', 'Product Price', 'trim|required');
-        $this->form_validation->set_rules('product_quantity', 'Product Quantity', 'trim|required');
-        $this->form_validation->set_rules('product_category', 'Product Category', 'trim|required');
-        $this->form_validation->set_rules('product_brand', 'Product Brand', 'trim|required');
-        $this->form_validation->set_rules('product_feature', 'Product Feature', 'trim');
-        $this->form_validation->set_rules('publication_status', 'Publication Status', 'trim|required');
+        $this->form_validation->set_rules('product_price', 'giá bán', 'trim|required');
+        $this->form_validation->set_rules('product_quantity', 'số lượng', 'trim|required');
+        $this->form_validation->set_rules('product_category', 'nhóm hàng', 'trim|required');
+        $this->form_validation->set_rules('product_brand', 'thương hiệu', 'trim|required');
+        $this->form_validation->set_rules('product_feature', 'nhóm hiển thị', 'trim');
+        $this->form_validation->set_rules('publication_status', 'trạng thái', 'trim|required');
 
         if (!empty($_FILES['product_image']['name'])) {
             $config['upload_path']   = './uploads/';
@@ -76,10 +76,10 @@ class Product extends CI_Controller
             $result = $this->product_model->save_product_info($data);
 
             if ($result) {
-                $this->session->set_flashdata('message', 'Product Inserted Sucessfully');
+                $this->session->set_flashdata('message', 'Thêm sản phẩm thành công');
                 redirect('manage/product');
             } else {
-                $this->session->set_flashdata('message', 'Product Inserted Failed');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('manage/product');
             }
         } else {
@@ -92,10 +92,10 @@ class Product extends CI_Controller
     {
         $result = $this->product_model->published_product_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'Published Product Sucessfully');
+            $this->session->set_flashdata('message', 'Cập nhật trạng thái hoạt động thành công');
             redirect('manage/product');
         } else {
-            $this->session->set_flashdata('message', 'Published Product  Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/product');
         }
     }
@@ -103,10 +103,10 @@ class Product extends CI_Controller
     {
         $result = $this->product_model->unpublished_product_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'UnPublished Product Sucessfully');
+            $this->session->set_flashdata('message', 'Cập nhật trạng thái chờ thành công');
             redirect('manage/product');
         } else {
-            $this->session->set_flashdata('message', 'UnPublished Product  Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/product');
         }
     }
@@ -139,16 +139,16 @@ class Product extends CI_Controller
 
         $delete_image = substr($product_delete_image, strlen(base_url()));
 
-        $this->form_validation->set_rules('product_title', 'Product Title', 'trim|required');
-        $this->form_validation->set_rules('product_short_description', 'Product Short Description', 'trim|required');
-        $this->form_validation->set_rules('product_long_description', 'Product Long Status', 'trim|required');
+        $this->form_validation->set_rules('product_title', 'tên sản phẩm', 'trim|required');
+        $this->form_validation->set_rules('product_short_description', 'mô tả chung', 'trim|required');
+        $this->form_validation->set_rules('product_long_description', 'chi tiết sản phẩm', 'trim|required');
         // $this->form_validation->set_rules('product_image', 'Product Image', 'trim|required');
-        $this->form_validation->set_rules('product_price', 'Product Price', 'trim|required');
-        $this->form_validation->set_rules('product_quantity', 'Product Quantity', 'trim|required');
-        $this->form_validation->set_rules('product_category', 'Product Category', 'trim|required');
-        $this->form_validation->set_rules('product_brand', 'Product Brand', 'trim|required');
-        $this->form_validation->set_rules('product_feature', 'Product Feature', 'trim');
-        $this->form_validation->set_rules('publication_status', 'Publication Status', 'trim|required');
+        $this->form_validation->set_rules('product_price', 'giá bán', 'trim|required');
+        $this->form_validation->set_rules('product_quantity', 'số lượng', 'trim|required');
+        $this->form_validation->set_rules('product_category', 'nhóm hàng', 'trim|required');
+        $this->form_validation->set_rules('product_brand', 'thương hiệu', 'trim|required');
+        $this->form_validation->set_rules('product_feature', 'nhóm hiển thị', 'trim');
+        $this->form_validation->set_rules('publication_status', 'trạng thái', 'trim|required');
 
         if (!empty($_FILES['product_image']['name'])) {
             $config['upload_path']   = './uploads/';
@@ -174,10 +174,10 @@ class Product extends CI_Controller
             $result = $this->product_model->update_product_info($data, $id);
 
             if ($result) {
-                $this->session->set_flashdata('message', 'Product Updated Sucessfully');
+                $this->session->set_flashdata('message', 'Cập nhật sản phẩm thành công');
                 redirect('manage/product');
             } else {
-                $this->session->set_flashdata('message', 'Product Updated Failed');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('manage/product');
             }
         } else {
@@ -192,10 +192,10 @@ class Product extends CI_Controller
         unlink('uploads/' . $delete_image->product_image);
         $result = $this->product_model->delete_product_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'Product Deleted Sucessfully');
+            $this->session->set_flashdata('message', 'Đã xóa sản phẩm');
             redirect('manage/product');
         } else {
-            $this->session->set_flashdata('message', 'Product Deleted Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/product');
         }
     }

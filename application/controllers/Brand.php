@@ -33,17 +33,17 @@ class Brand extends CI_Controller
         $data['brand_description']  = $this->input->post('brand_description');
         $data['publication_status'] = $this->input->post('publication_status');
 
-        $this->form_validation->set_rules('brand_name', 'Brand Name', 'trim|required');
-        $this->form_validation->set_rules('brand_description', 'Brand Description', 'trim|required');
-        $this->form_validation->set_rules('publication_status', 'Publication Status', 'trim|required');
+        $this->form_validation->set_rules('brand_name', 'tên thương hiệu', 'trim|required');
+        $this->form_validation->set_rules('brand_description', 'mô tả', 'trim|required');
+        $this->form_validation->set_rules('publication_status', 'trạng thái', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->brand_model->save_brand_info($data);
             if ($result) {
-                $this->session->set_flashdata('message', 'Brand Inseted Sucessfully');
+                $this->session->set_flashdata('message', 'Thêm nhãn hiệu thành công');
                 redirect('manage/brand');
             } else {
-                $this->session->set_flashdata('message', 'Brand Inserted Failed');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('manage/brand');
             }
         } else {
@@ -57,10 +57,10 @@ class Brand extends CI_Controller
     {
         $result = $this->brand_model->delete_brand_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'Brand Deleted Sucessfully');
+            $this->session->set_flashdata('message', 'Xóa thành công');
             redirect('manage/brand');
         } else {
-            $this->session->set_flashdata('message', 'Brand Deleted Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/brand');
         }
     }
@@ -80,17 +80,17 @@ class Brand extends CI_Controller
         $data['brand_description']  = $this->input->post('brand_description');
         $data['publication_status'] = $this->input->post('publication_status');
 
-        $this->form_validation->set_rules('brand_name', 'Brand Name', 'trim|required');
-        $this->form_validation->set_rules('brand_description', 'Brand Description', 'trim|required');
-        $this->form_validation->set_rules('publication_status', 'Publication Status', 'trim|required');
+        $this->form_validation->set_rules('brand_name', 'tên thương hiệu', 'trim|required');
+        $this->form_validation->set_rules('brand_description', 'mô tả', 'trim|required');
+        $this->form_validation->set_rules('publication_status', 'trạng thái', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->brand_model->update_brand_info($data, $id);
             if ($result) {
-                $this->session->set_flashdata('message', 'Brand Update Sucessfully');
+                $this->session->set_flashdata('message', 'Cập nhật thành công');
                 redirect('manage/brand');
             } else {
-                $this->session->set_flashdata('message', 'Brand Update Failed');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('manage/brand');
             }
         } else {
@@ -104,10 +104,10 @@ class Brand extends CI_Controller
     {
         $result = $this->brand_model->published_brand_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'Published Brand Sucessfully');
+            $this->session->set_flashdata('message', 'Đã thay đổi trạng thái hoạt động');
             redirect('manage/brand');
         } else {
-            $this->session->set_flashdata('message', 'Published Brand  Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/brand');
         }
     }
@@ -116,10 +116,10 @@ class Brand extends CI_Controller
     {
         $result = $this->brand_model->unpublished_brand_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'UnPublished Brand Sucessfully');
+            $this->session->set_flashdata('message', 'Đã thay đổi trạng thái chờ');
             redirect('manage/brand');
         } else {
-            $this->session->set_flashdata('message', 'UnPublished Brand  Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/brand');
         }
     }

@@ -1,32 +1,25 @@
 <!-- start: Content -->
 <div id="content" class="span10">
 
-
     <ul id="breadcrumb-custom" class="breadcrumb">
         <li>
-            <i class="icon-home"></i>
-            <a href="<?php echo base_url('dashboard')?>">Home</a>
+            <a href="<?php echo base_url('dashboard')?>"><i class="icon-home"></i>Trang chủ</a>
             <i class="icon-angle-right"></i> 
         </li>
         <li>
-            <i class="icon-edit"></i>
-            <a href="<?php echo base_url('edit/category/'.$category_info_by_id->id)?>">Edit Category</a>
+            <a href="<?php echo base_url('manage/category')?>">Nhóm sản phẩm</a>
+            <i class="icon-angle-right"></i> 
+        </li>
+        <li>
+            <a href="<?php echo base_url('edit/category/'.$category_info_by_id->id)?>">Cập nhật thông tin nhóm sản phẩm</a>
         </li>
     </ul>
 
     <div class="row-fluid sortable">
         <div class="box span12">
-            <div class="box-header" data-original-title>
-                <h2><i class="halflings-icon edit"></i><span class="break"></span>Edit Category</h2>
-                <div class="box-icon">
-                    <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-                    <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-                    <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-                </div>
-            </div>
             <style type="text/css">
                 #result{color:red;padding: 5px}
-                #result p{color:red}
+                #result p{color:red; text-align: center;}
             </style>
             <div id="result">
                 <p><?php echo $this->session->flashdata('message');?></p>
@@ -36,13 +29,13 @@
                     <fieldset>
 
                         <div class="control-group">
-                            <label class="control-label" for="fileInput">Category Name</label>
+                            <label class="control-label custom-admin-label" for="fileInput">Tên loại nhóm</label>
                             <div class="controls">
                                 <input class="span6 typeahead" value="<?php echo $category_info_by_id->category_name;?>" id="category_name" name="category_name" type="text"/>
                             </div>
                         </div>          
                         <div class="control-group">
-                            <label class="control-label" for="textarea2">Category Description</label>
+                            <label class="control-label custom-admin-label" for="textarea2">Mô tả</label>
                             <div class="controls">
                                 <textarea class="cleditor" id="category_description" name="category_description" rows="3">
                                     <?php echo $category_info_by_id->category_description;?>
@@ -51,18 +44,18 @@
                         </div>
                                 
                         <div class="control-group">
-                            <label class="control-label" for="textarea2">Publication Status</label>
+                            <label class="control-label custom-admin-label" for="textarea2">Trạng thái</label>
                             <div class="controls">
                                 <select id="slect" name="publication_status">
-                                    <option value="1">Published</option>
-                                    <option value="0">UnPublished</option>
+                                    <option value="1">Hoạt động</option>
+                                    <option value="0">Chưa đăng tải</option>
                                 </select>
                             </div>
                         </div>
                         
-                        <div class="form-actions">
-                            <button type="submit" id="save_category" class="btn btn-primary">Save changes</button>
-                            <button type="reset" class="btn">Cancel</button>
+                        <div class="form-actions custom-panel-button">
+                            <button type="submit" id="save_category" class="btn btn-primary custom-admin-btn">Cập nhật</button>
+                            <button type="reset" class="btn btn-primary custom-admin-btn">Hủy bỏ</button>
                         </div>
                     </fieldset>
                 </form>   

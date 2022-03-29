@@ -86,6 +86,18 @@ $route['update/slider/(:num)']      = 'slider/update_slider/$1';
 $route['published/slider/(:num)']   = 'slider/published_slider/$1';
 $route['unpublished/slider/(:num)'] = 'slider/unpublished_slider/$1';
 
+//Customer
+$route['manage/customer'] = 'customer/manage_customer';
+$route['active/customer/(:num)']   = 'customer/active_customer/$1';
+$route['unactive/customer/(:num)'] = 'customer/unactive_customer/$1';
+
+//promo
+$route['manage/promo'] = 'promo/manage_promo';
+$route['save/promo']  = 'promo/save_promo';
+$route['active/promo/(:num)']   = 'promo/active_promo/$1';
+$route['unactive/promo/(:num)'] = 'promo/unactive_promo/$1';
+$route['delete/promo/(:num)']      = 'promo/delete_promo/$1';
+
 //Theme Option  Route List
 $route['theme/option'] = 'themeoption';
 $route['save/option']  = 'themeoption/save_option';

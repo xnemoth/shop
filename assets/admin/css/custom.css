@@ -1,13 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
+:root {
+	--mistcolor: rgb(101, 111, 122);
+}
 
 /* Custom css for header */
 body {
 	background: #ffedd4 !important;
-	color: #ffedd4 !important;
+	color: rgb(43, 43, 209) !important;
 	border: none;
 	font-family: "Poppins", sans-serif !important;
 	font-weight: 400;
+}
+
+body h1 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 .navbar .brand {
@@ -17,95 +24,104 @@ body {
 	margin-left: -30px !important;
 	font-size: 17px;
 	font-weight: normal;
-	color: white ;
-    text-shadow: none;
+	color: white;
+	text-shadow: none;
 }
 
-.navbar-inner{
-    background: rgb(101, 111, 122) !important;
-    text-shadow: none;
-    border: none !important;
+.navbar-inner {
+	background: var(--mistcolor) !important;
+	text-shadow: none;
+	border: none !important;
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color:rgb(101, 111, 122) !important;
+	background-color: var(--mistcolor) !important;
 }
 
 .dropdown-menu {
-    background-color:rgb(101, 111, 122) !important;
-    border: none !important;
+	background-color: var(--mistcolor) !important;
+	border: none !important;
 }
 
 .dropdown-menu li a {
 	color: #fff;
 }
 
-#breadcrumb-custom{
+#breadcrumb-custom {
 	background: #2d89ef !important;
+}
+
+#breadcrumb-custom a {
+	color: white !important;
+}
+
+#breadcrumb-custom i {
+	color: white !important;
 }
 
 /* Sidebar-left */
 
-.navtab-li-custom{ 
+.navtab-li-custom {
 	border-bottom: 2px solid white !important;
 }
 
-.navtab-li-custom:hover{
+.navtab-li-custom:hover {
 	transform: translateX(10px);
 }
 
 .nav-tabs.nav-stacked > li > a,
-.nav-tabs.nav-stacked > li > ul > li > a{
+.nav-tabs.nav-stacked > li > ul > li > a {
 	color: whitesmoke !important;
 }
 
-.nav-tabs.nav-stacked > li:hover ,
+.nav-tabs.nav-stacked > li:hover,
 .nav-tabs.nav-stacked > li > a:hover,
-.nav-tabs.nav-stacked > li > ul > li > a:hover{
+.nav-tabs.nav-stacked > li > ul > li > a:hover {
 	background-color: #2d89ef !important;
 	color: white !important;
 }
 
 #sidebar-left {
-	background: rgb(101, 111, 122) !important;
+	background: var(--mistcolor) !important;
 }
 
 /* footer */
 
-footer{
-	background:rgb(101, 111, 122) !important;
+footer {
+	background: var(--mistcolor) !important;
 }
 
 /*  login admin page */
 
-.admin-validate p{
+.admin-validate p {
 	text-align: center !important;
 }
 
-.login-box.login-box-custom{
+.login-box.login-box-custom {
 	border: 1px solid goldenrod !important;
 	-webkit-box-shadow: 0px 0px 0px 5px rgb(218 165 32 / 25%) !important;
 	border-radius: 7px;
 }
 
-.input-prepend.login-admin-custom{
+.input-prepend.login-admin-custom {
 	border: 0px !important;
 }
 
-.add-on.login-admin-custom{
+.add-on.login-admin-custom {
 	background: goldenrod !important;
 	border: 1px solid goldenrod !important;
 	border-top-left-radius: 7px !important;
 	border-bottom-left-radius: 7px !important;
 }
 
-.custom-login-input{
+.custom-login-input {
 	border: 1px solid goldenrod !important;
 	border-left: none !important;
 	border-top-right-radius: 7px !important;
 	border-bottom-right-radius: 7px !important;
+	color: black !important;
 }
 
 .login-box .add-on i {
@@ -115,10 +131,87 @@ footer{
 #submit-login-custom {
 	margin: 0px;
 	width: 100%;
-	 display: flex;
-	 justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
-.admin-login-check-custom{ 
+.admin-login-check-custom {
 	border-radius: 7px !important;
+}
+
+/*  dashboard admin */
+
+.span3.metro-custom {
+	border-radius: 33px !important;
+}
+
+.btn-link-footer{ 
+	color: white !important;
+	border-color: transparent;
+	border-radius: 50% !important;
+	border: none !important;
+	padding: 10px;
+	width: 15px !important;
+	height: 15px !important;
+	text-align: center !important;
+}
+
+.btn-fb-footer {
+	background-color: #3b5998 !important;
+	
+}
+
+.btn-gh-footer {
+	background-color: #333333 !important;
+}
+
+.btn-email-footer {
+	background-color: #333333 !important;
+}
+
+/* other page */
+.custom-admin-label {
+	font-weight: bold !important;
+	font-size: 15px;
+}
+
+.controls > input,
+select {
+	border: 2px solid var(--mistcolor) !important;
+	border-radius: 3px;
+}
+
+input {
+	border: 2px solid var(--mistcolor) !important;
+	border-radius: 3px !important;
+}
+
+.cleditorMain {
+	border: 2px solid var(--mistcolor) !important;
+	background-color: rgb(242, 247, 253);
+	border-radius: 3px;
+}
+
+.custom-panel-button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px !important;
+	background-color: rgb(242, 247, 253);
+}
+
+.custom-admin-btn {
+	border-radius: 3px !important;
+	color: black;
+	font-weight: 700 !important;
+}
+
+table th,
+td {
+	text-align: center !important;
+	background-color: #fbf7f1 !important;
+}
+
+#content {
+	min-height: 664.5px !important;
 }

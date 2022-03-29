@@ -33,10 +33,10 @@ class Slider extends CI_Controller
         $data['slider_link']        = $this->input->post('slider_link');
         $data['publication_status'] = $this->input->post('publication_status');
 
-        $this->form_validation->set_rules('slider_title', 'Slider Title', 'trim|required');
-        $this->form_validation->set_rules('slider_link', 'Slider Link', 'trim|required');
+        $this->form_validation->set_rules('slider_title', 'tên slider', 'trim|required');
+        $this->form_validation->set_rules('slider_link', 'đường dẫn chèn', 'trim|required');
         // $this->form_validation->set_rules('product_image', 'Product Image', 'trim|required');
-        $this->form_validation->set_rules('publication_status', 'Publication Status', 'trim|required');
+        $this->form_validation->set_rules('publication_status', 'trạng thái', 'trim|required');
 
         if (!empty($_FILES['slider_image']['name'])) {
             $config['upload_path']   = './uploads/';
@@ -61,10 +61,10 @@ class Slider extends CI_Controller
             $result = $this->slider_model->save_slider_info($data);
 
             if ($result) {
-                $this->session->set_flashdata('message', 'Slider Inserted Sucessfully');
+                $this->session->set_flashdata('message', 'Thêm slider thành công');
                 redirect('manage/slider');
             } else {
-                $this->session->set_flashdata('message', 'Slider Inserted Failed');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('manage/slider');
             }
         } else {
@@ -79,10 +79,10 @@ class Slider extends CI_Controller
         unlink('uploads/' . $delete_image->slider_image);
         $result = $this->slider_model->delete_slider_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'Slider Deleted Sucessfully');
+            $this->session->set_flashdata('message', 'Xóa slider thành công');
             redirect('manage/slider');
         } else {
-            $this->session->set_flashdata('message', 'Slider Deleted Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/slider');
         }
     }
@@ -103,10 +103,10 @@ class Slider extends CI_Controller
         $data['publication_status'] = $this->input->post('publication_status');
         $delete_image               = $this->input->post('slider_delete_image');
 
-        $this->form_validation->set_rules('slider_title', 'Slider Title', 'trim|required');
-        $this->form_validation->set_rules('slider_link', 'Slider Link', 'trim|required');
+        $this->form_validation->set_rules('slider_title', 'tên slider', 'trim|required');
+        $this->form_validation->set_rules('slider_link', 'đường dẫn chèn', 'trim|required');
         // $this->form_validation->set_rules('product_image', 'Product Image', 'trim|required');
-        $this->form_validation->set_rules('publication_status', 'Publication Status', 'trim|required');
+        $this->form_validation->set_rules('publication_status', 'trạng thái', 'trim|required');
 
         if (!empty($_FILES['slider_image']['name'])) {
             $config['upload_path']   = './uploads/';
@@ -132,10 +132,10 @@ class Slider extends CI_Controller
             $result = $this->slider_model->update_slider_info($data, $id);
 
             if ($result) {
-                $this->session->set_flashdata('message', 'Slider Updated Sucessfully');
+                $this->session->set_flashdata('message', 'Cập nhật slider thành công');
                 redirect('manage/slider');
             } else {
-                $this->session->set_flashdata('message', 'Slider Updated Failed');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
                 redirect('manage/slider');
             }
         } else {
@@ -149,10 +149,10 @@ class Slider extends CI_Controller
     {
         $result = $this->slider_model->published_slider_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'Published Slider Sucessfully');
+            $this->session->set_flashdata('message', 'Cập nhật trạng thái hoạt động thành công');
             redirect('manage/slider');
         } else {
-            $this->session->set_flashdata('message', 'Published Slider  Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/slider');
         }
     }
@@ -161,10 +161,10 @@ class Slider extends CI_Controller
     {
         $result = $this->slider_model->unpublished_slider_info($id);
         if ($result) {
-            $this->session->set_flashdata('message', 'UnPublished Slider Sucessfully');
+            $this->session->set_flashdata('message', 'Cập nhật trạng thái chờ thành công');
             redirect('manage/slider');
         } else {
-            $this->session->set_flashdata('message', 'UnPublished Slider  Failed');
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
             redirect('manage/slider');
         }
     }

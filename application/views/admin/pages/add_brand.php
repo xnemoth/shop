@@ -3,30 +3,20 @@
 
 
     <ul id="breadcrumb-custom" class="breadcrumb">
-        <li>
-            <i class="icon-home"></i>
-            <a href="<?php echo base_url('dashboard')?>">Home</a>
+        <li>          
+            <a href="<?php echo base_url('dashboard')?>"><i class="icon-home"></i>Trang chủ</a>
             <i class="icon-angle-right"></i> 
         </li>
         <li>
-            <i class="icon-edit"></i>
-            <a href="<?php echo base_url('add/brand')?>">Add Brand</a>
+            <a href="<?php echo base_url('add/brand')?>">Thêm nhãn hàng</a>
         </li>
     </ul>
 
     <div class="row-fluid sortable">
         <div class="box span12">
-            <div class="box-header" data-original-title>
-                <h2><i class="halflings-icon edit"></i><span class="break"></span>Add Brand</h2>
-                <div class="box-icon">
-                    <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-                    <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-                    <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-                </div>
-            </div>
             <style type="text/css">
                 #result{color:red;padding: 5px}
-                #result p{color:red}
+                #result p{color:red; text-align: center;}
             </style>
             <div id="result">
                 <p><?php echo $this->session->flashdata('message');?></p>
@@ -35,32 +25,32 @@
                 <form class="form-horizontal" action="<?php echo base_url('save/brand')?>" method="post">
                     <fieldset>
 
-                        <div class="control-group">
-                            <label class="control-label" for="fileInput">Brand Name</label>
+                        <div class="control-group" style="margin-left: 80px;">
+                            <label class="control-label custom-admin-label" for="fileInput">Tên nhãn hiệu</label>
                             <div class="controls">
                                 <input class="span6 typeahead" name="brand_name" id="fileInput" type="text"/>
                             </div>
                         </div>          
-                        <div class="control-group">
-                            <label class="control-label" for="textarea2">Brand Description</label>
+                        <div class="control-group" style="margin-left: 80px;">
+                            <label class="control-label custom-admin-label" for="textarea2">Mô tả</label>
                             <div class="controls">
                                 <textarea class="cleditor" id="textarea2" name="brand_description" rows="3"></textarea>
                             </div>
                         </div>
                         
-                        <div class="control-group">
-                            <label class="control-label" for="textarea2">Publication Status</label>
+                        <div class="control-group" style="margin-left: 80px;">
+                            <label class="control-label custom-admin-label" for="textarea2">Trạng thái</label>
                             <div class="controls">
                                 <select name="publication_status">
-                                    <option value="1">Published</option>
-                                    <option value="0">UnPublished</option>
+                                    <option value="1">Hoạt động</option>
+                                    <option value="0">Chưa đăng tải</option>
                                 </select>
                             </div>
                         </div>
                         
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                            <button type="reset" class="btn">Cancel</button>
+                        <div class="form-actions custom-panel-button">
+                            <button type="submit" class="btn btn-primary custom-admin-btn custom-admin-label">Xác nhận</button>
+                            <button type="reset" class="btn custom-admin-btn">Hủy bỏ</button>
                         </div>
                     </fieldset>
                 </form>   

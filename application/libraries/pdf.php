@@ -21,7 +21,7 @@ class Pdf extends DOMPDF
 	 * Get an instance of CodeIgniter
 	 *
 	 * @access	protected
-	 * @return	void
+	 * @return	object
 	 */
 	protected function ci()
 	{

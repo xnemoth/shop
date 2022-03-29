@@ -50,7 +50,7 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="<?= base_url() ?>"><i class="halflings-icon white user" target="_blank"></i> Trang web</a></li>
+                                <li><a href="<?= base_url() ?>" target="_blank"><i class="halflings-icon white user"></i> Trang web</a></li>
                                 <li><a href="<?php echo base_url('logout') ?>"><i class="halflings-icon white off"></i> Đăng xuất</a></li>
                             </ul>
                         </li>
@@ -77,12 +77,14 @@
                         <li class="navtab-li-custom"><a href="<?php echo base_url('add/brand') ?>"><i class="icon-edit"></i><span class="hidden-tablet"> Thêm nhãn hàng</span></a></li>
                         <li class="navtab-li-custom"><a href="<?php echo base_url('manage/brand') ?>"><i class="icon-list-alt"></i><span class="hidden-tablet"> Nhãn hàng</span></a></li>
                         <li class="navtab-li-custom"><a href="<?php echo base_url('add/product') ?>"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Thêm sản phẩm</span></a></li>
-                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/product') ?>"><i class="icon-eye-open"></i><span class="hidden-tablet"> Sản phẩm</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/product') ?>"><i class="icon-gift"></i><span class="hidden-tablet"> Sản phẩm</span></a></li>
 
                         <li class="navtab-li-custom"><a href="<?php echo base_url('add/slider') ?>"><i class="icon-font"></i><span class="hidden-tablet"> Thêm banner</span></a></li>
                         <li class="navtab-li-custom"><a href="<?php echo base_url('manage/slider') ?>"><i class="icon-picture"></i><span class="hidden-tablet"> Quản lý banner</span></a></li>
                         <li class="navtab-li-custom"><a href="<?php echo base_url('manage/order'); ?>"><i class="icon-calendar"></i><span class="hidden-tablet"> Đơn hàng</span></a></li>
-                        <li class="navtab-li-custom"><a href="<?php echo base_url('theme/option'); ?>"><i class="icon-align-justify"></i><span class="hidden-tablet"> Cài đặt</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/customer'); ?>"><i class="icon-group"></i><span class="hidden-tablet"> Khách hàng</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('manage/promo') ?>"><i class="icon-tags"></i><span class="hidden-tablet"> Mã giảm giá</span></a></li>
+                        <li class="navtab-li-custom"><a href="<?php echo base_url('theme/option'); ?>"><i class="icon-book"></i><span class="hidden-tablet"> Cài đặt</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -91,7 +93,7 @@
             <noscript>
                 <div class="alert alert-block span10">
                     <h4 class="alert-heading">Warning!</h4>
-                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                    <p>Bạn cần phải bật <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> để sử dụng website tốt nhất</p>
                 </div>
             </noscript>
 
@@ -102,7 +104,7 @@
     </div>
     <!--/fluid-row-->
 
-    <div class="modal hide fade" id="myModal">
+    <!-- <div class="modal hide fade" id="myModal">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
             <h3>Settings</h3>
@@ -114,7 +116,7 @@
             <a href="#" class="btn" data-dismiss="modal">Close</a>
             <a href="#" class="btn btn-primary">Save changes</a>
         </div>
-    </div>
+    </div> -->
 
     <div class="clearfix"></div>
 
@@ -122,7 +124,20 @@
 
         <p>
             <center>
-                <span>&copy; Nemoth </span>
+                <span>Develope by &copy; Nemoth with &#10084; &nbsp; &nbsp;</span>
+                <a class="btn btn-primary btn-link-footer btn-fb-footer" href="<?php echo get_option('site_facebook_link');?>" role="button" target="_blank">
+                    <i class="icon-facebook"></i>
+                </a>
+                &nbsp;
+                &nbsp;
+                <a class="btn btn-primary btn-link-footer btn-gh-footer" href="<?php echo get_option('site_github_link');?>" role="button" target="_blank">
+                    <i class="icon-github"></i>
+                </a>
+                &nbsp;
+                &nbsp;
+                <a class="btn btn-primary btn-link-footer btn-email-footer" href="mailto:<?php echo get_option('site_email_link');?>" role="button" target="_blank">
+                    <i class="icon-envelope"></i>
+                </a>
 
         </p>
         </center>
