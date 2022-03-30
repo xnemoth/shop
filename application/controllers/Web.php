@@ -177,14 +177,14 @@ class Web extends CI_Controller
         $data['customer_phone']    = $this->input->post('customer_phone');
         $data['customer_zipcode']  = $this->input->post('customer_zipcode');
 
-        $this->form_validation->set_rules('customer_name', 'Customer Name', 'trim|required');
-        $this->form_validation->set_rules('customer_email', 'Customer Email', 'trim|required|valid_email|is_unique[tbl_customer.customer_email]');
-        $this->form_validation->set_rules('customer_password', 'Customer Password', 'trim|required');
-        $this->form_validation->set_rules('customer_address', 'Customer Address', 'trim|required');
-        $this->form_validation->set_rules('customer_city', 'Customer City', 'trim|required');
-        $this->form_validation->set_rules('customer_country', 'Customer Country', 'trim|required');
-        $this->form_validation->set_rules('customer_phone', 'Customer Phone', 'trim|required');
-        $this->form_validation->set_rules('customer_zipcode', 'Customer Zipcode', 'trim|required');
+        $this->form_validation->set_rules('customer_name', 'họ và tên', 'trim|required');
+        $this->form_validation->set_rules('customer_email', 'email', 'trim|required|valid_email|is_unique[tbl_customer.customer_email]');
+        $this->form_validation->set_rules('customer_password', 'mật khẩu', 'trim|required');
+        $this->form_validation->set_rules('customer_address', 'địa chỉ', 'trim|required');
+        $this->form_validation->set_rules('customer_city', 'thành phố', 'trim|required');
+        $this->form_validation->set_rules('customer_country', 'quốc gia', 'trim|required');
+        $this->form_validation->set_rules('customer_phone', 'số điện thoại', 'trim|required');
+        $this->form_validation->set_rules('customer_zipcode', 'mã', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->web_model->save_customer_info($data);
@@ -193,7 +193,7 @@ class Web extends CI_Controller
                 $this->session->set_flashdata('customer_email', $data['customer_email']);
                 redirect('register/success');
             } else {
-                $this->session->set_flashdata('message', 'Customer Registration Fail');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại!');
                 redirect('customer/register');
             }
         } else {
@@ -208,8 +208,8 @@ class Web extends CI_Controller
         $data['customer_email']    = $this->input->post('customer_email');
         $data['customer_password'] = md5($this->input->post('customer_password'));
 
-        $this->form_validation->set_rules('customer_email', 'Customer Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('customer_password', 'Customer Password', 'trim|required');
+        $this->form_validation->set_rules('customer_email', 'tên tài khoản', 'trim|required|valid_email');
+        $this->form_validation->set_rules('customer_password', 'mật khẩu', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->web_model->get_customer_info($data);
@@ -218,7 +218,7 @@ class Web extends CI_Controller
                 $this->session->set_userdata('customer_email', $data['customer_email']);
                 redirect('/');
             } else {
-                $this->session->set_flashdata('message', 'Customer Login Fail');
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại!');
                 redirect('customer/login');
             }
         } else {
@@ -268,10 +268,10 @@ class Web extends CI_Controller
         $this->form_validation->set_rules('customer_email', 'email', 'trim|required|valid_email|is_unique[tbl_customer.customer_email]');
         $this->form_validation->set_rules('customer_password', 'mật khẩu', 'trim|required');
         $this->form_validation->set_rules('customer_address', 'địa chỉ', 'trim|required');
-        $this->form_validation->set_rules('customer_city', 'Customer City', 'trim|required');
-        $this->form_validation->set_rules('customer_country', 'Customer Country', 'trim|required');
+        $this->form_validation->set_rules('customer_city', 'thành phố', 'trim|required');
+        $this->form_validation->set_rules('customer_country', 'quốc gia', 'trim|required');
         $this->form_validation->set_rules('customer_phone', 'số điện thoại', 'trim|required');
-        $this->form_validation->set_rules('customer_zipcode', 'Customer Zipcode', 'trim|required');
+        $this->form_validation->set_rules('customer_zipcode', 'mã', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->web_model->save_customer_info($data);
@@ -311,10 +311,10 @@ class Web extends CI_Controller
         $this->form_validation->set_rules('shipping_name', 'tên người nhận', 'trim|required');
         $this->form_validation->set_rules('shipping_email', 'email', 'trim|required|valid_email|is_unique[tbl_shipping.shipping_email]');
         $this->form_validation->set_rules('shipping_address', 'địa chỉ nhận hàng', 'trim|required');
-        $this->form_validation->set_rules('shipping_city', 'Shipping City', 'trim|required');
-        $this->form_validation->set_rules('shipping_country', 'Shipping Country', 'trim|required');
+        $this->form_validation->set_rules('shipping_city', 'thành phố', 'trim|required');
+        $this->form_validation->set_rules('shipping_country', 'huyện', 'trim|required');
         $this->form_validation->set_rules('shipping_phone', 'số điện thoại', 'trim|required');
-        $this->form_validation->set_rules('shipping_zipcode', 'Shipping Zipcode', 'trim|required');
+        $this->form_validation->set_rules('shipping_zipcode', 'mã', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $result = $this->web_model->save_shipping_address($data);
@@ -351,7 +351,7 @@ class Web extends CI_Controller
     {
         $data['payment_type'] = $this->input->post('payment');
 
-        $this->form_validation->set_rules('payment', 'Payment', 'trim|required');
+        $this->form_validation->set_rules('payment', 'phương thức thanh toán', 'trim|required');
 
         if ($this->form_validation->run() == true) {
             $payment_id           = $this->web_model->save_payment_info($data);

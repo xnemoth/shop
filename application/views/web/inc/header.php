@@ -4,6 +4,7 @@
     <title>Nemoth's shop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="content-language" content="vi">
     <link href="<?php echo base_url() ?>assets/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url() ?>assets/web/css/custom.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url() ?>assets/web/css/menu.css" rel="stylesheet" type="text/css" media="all" />
@@ -113,4 +114,5 @@
                 </li>
             </ul>
         </div>
+        
         <script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/custom.js"></script>

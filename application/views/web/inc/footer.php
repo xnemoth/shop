@@ -4,17 +4,10 @@
     <div class="wrapper footer-wraper">	
         <div class="section group">
             <div class="col_1_of_4 span_1_of_4 footer-span">
-                <h4>h 1</h4>
+                <h4>Chính sách</h4>
                 <ul>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                </ul>
-            </div>
-            <div class="col_1_of_4 span_1_of_4 footer-span">
-                <h4>h 2</h4>
-                <ul>
-                    <li><a href="about.html">1</a></li>
-                    <li><a href="faq.html">2</a></li>
+                    <li><a href="#">Mua hàng</a></li>
+                    <li><a href="#">Tìm hiểu thêm</a></li>
                 </ul>
             </div>
             <div class="col_1_of_4 span_1_of_4 footer-span">
