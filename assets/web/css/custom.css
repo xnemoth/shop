@@ -2,7 +2,8 @@
 	--main-clr: #f8ce43;
 	--blue-main: #1a94ff;
 	--font-main: "Poppins", sans-serif;
-	--font-secondary: "Monda", sans-serif !important;
+	--font-secondary: "Monda", sans-serif ;
+	--bg-clr: #eff3f7;
 }
 
 .wrap {
@@ -22,7 +23,7 @@
 }
 
 body {
-	background: #fff;
+	background: var(--bg-clr) !important;
 }
 .navigation {
 	position: fixed;
@@ -332,6 +333,7 @@ html body li.active a {
 	opacity: 1;
   display: block;
   width: 100%;
+  height: auto;
   transition: .5s ease;
   backface-visibility: hidden;
 }
@@ -376,4 +378,39 @@ h2.feature-prd{
 
 .price {
 	font-weight: bold;
+}
+
+/* */
+.footer{
+	padding-left: 75px !important;
+	background: var(--bg-clr) !important;
+	box-shadow: none !important;
+	padding-bottom: 7px !important;
+	width: 100% !important;
+}
+
+.span_1_of_4.footer-span h4{
+	color: var(--main-clr) !important;
+	font-family: var(--font-secondary) !important; 
+}
+
+.section.group .col_1_of_4{
+	margin: 0px !important;
+	border-right: none !important;
+}
+
+.col_1_of_4.span_1_of_4 ul{
+	margin-bottom: 0px !important;
+	padding: 0px !important;
+}
+
+.copy_right{
+	padding: 0px !important;
+}
+.copy_right p{
+	margin-bottom: 0px !important;
+}
+
+.col_1_of_4.span_1_of_4 .social-icons{
+	padding-top: 0px !important;
 }

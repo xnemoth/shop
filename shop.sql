@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 29, 2022 lúc 04:17 AM
+-- Thời gian đã tạo: Th3 29, 2022 lúc 04:31 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 7.4.27
 
@@ -192,8 +192,13 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`product_id`, `product_title`, `product_short_description`, `product_long_description`, `product_image`, `product_price`, `product_quantity`, `product_feature`, `product_category`, `product_brand`, `product_author`, `product_view`, `published_date`, `publication_status`) VALUES
-(13, 'cá', '<b style=\"\"><font color=\"#ffcc66\" style=\"\" size=\"5\">tôm</font></b>', '<b style=\"\"><i style=\"\"><font size=\"4\" style=\"background-color: rgb(51, 51, 51);\" color=\"#ffcc66\">Cua mực ốc</font></i></b>', 'lg.jpg', 200, 2, 1, 9, 6, 1, 0, '2022-03-28 14:10:29', 1),
-(14, 'khỉ', 'kó', '<span style=\"background-color: rgb(255, 102, 0); font-weight: bold;\">không</span><div id=\"gtx-trans\" style=\"font-weight: normal; position: absolute; left: -195px; top: 19.3505px;\"><div class=\"gtx-trans-icon\"></div></div>', 'Login.jpg', 22, 22, 0, 1, 2, 1, 0, '2022-03-28 14:23:27', 1);
+(13, 'cá', '<b style=\"\"><font color=\"#ffcc66\" style=\"\" size=\"5\">tôm</font></b>', '<b style=\"\"><i style=\"\"><font size=\"4\" style=\"background-color: rgb(51, 51, 51);\" color=\"#ffcc66\">Cua mực ốc</font></i></b>', 'lg.jpg', 200, 10, 1, 9, 6, 1, 0, '2022-03-28 14:10:29', 1),
+(14, 'khỉ', 'kó', '<span style=\"background-color: rgb(255, 102, 0); font-weight: bold;\">không</span><div id=\"gtx-trans\" style=\"font-weight: normal; position: absolute; left: -195px; top: 19.3505px;\"><div class=\"gtx-trans-icon\"></div></div>', 'Login.jpg', 22, 22, 0, 1, 2, 1, 0, '2022-03-28 14:23:27', 1),
+(15, 'test', '                                    test product                                ', '                                    test product 2                                ', 'customer.png', 23, 20, 1, 1, 2, 1, 0, '2022-03-29 12:50:17', 1),
+(16, 'test2', 'asd', 'fwe', 'btnclear1.png', 23, 23, 1, 1, 2, 1, 0, '2022-03-29 13:05:19', 1),
+(17, 'sa', 'fdq', 'asd', 'btnlogin.png', 24, 5, 0, 1, 2, 1, 0, '2022-03-29 13:05:37', 1),
+(18, 'asd', 'sd', 'asd', 'save.png', 23, 53, 1, 1, 2, 1, 0, '2022-03-29 13:12:08', 1),
+(19, 'awaw', 'adfs', 'asd', 'password-reset.png', 23, 54, 1, 1, 2, 1, 0, '2022-03-29 13:12:30', 1);
 
 -- --------------------------------------------------------
 
@@ -261,7 +266,11 @@ CREATE TABLE `tbl_slider` (
 --
 
 INSERT INTO `tbl_slider` (`slider_id`, `slider_title`, `slider_image`, `slider_link`, `publication_status`) VALUES
-(3, 'slider 3', '3.jpg', 'http://localhost/shop/add/slider 3', 1);
+(8, 'Kingston', 'test.jpg', 'http://localhost/Shop/', 1),
+(9, 'Logitech', 'logitech.jpg', 'http://localhost/Shop/', 1),
+(10, 'Seagate', 'seagate.jpg', 'http://localhost/Shop/', 1),
+(11, 'hynix', 'hynix.jpg', 'http://localhost/Shop/', 1),
+(13, 'intel', 'intel.jpg', 'http://localhost/Shop/', 1);
 
 -- --------------------------------------------------------
 
@@ -428,7 +437,7 @@ ALTER TABLE `tbl_order_details`
 -- AUTO_INCREMENT cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_promo`
@@ -446,7 +455,7 @@ ALTER TABLE `tbl_shipping`
 -- AUTO_INCREMENT cho bảng `tbl_slider`
 --
 ALTER TABLE `tbl_slider`
-  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_user`

@@ -13,6 +13,7 @@
     <script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/move-top.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/easing.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/nav-hover.js"></script>
+    <script src="https://kit.fontawesome.com/0ef1d9fe65.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
