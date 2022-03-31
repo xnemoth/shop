@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 29, 2022 lúc 04:31 PM
+-- Thời gian đã tạo: Th3 31, 2022 lúc 07:44 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 7.4.27
 
@@ -76,10 +76,7 @@ CREATE TABLE `tbl_customer` (
   `customer_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `customer_password` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `customer_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_zipcode` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `customer_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_country` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `customer_active` tinyint(4) NOT NULL COMMENT 'Active=1,Unactive=0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,9 +84,10 @@ CREATE TABLE `tbl_customer` (
 -- Đang đổ dữ liệu cho bảng `tbl_customer`
 --
 
-INSERT INTO `tbl_customer` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_address`, `customer_city`, `customer_zipcode`, `customer_phone`, `customer_country`, `customer_active`) VALUES
-(12, 'nemo', 'nemo.tronghieu@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'BLU', 'CM', '950000', '123456789', 'USA', 1),
-(13, 'nemoth', 'nemoth@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '?', 'avc', '34123', '234412', 'Bangladesh', 1);
+INSERT INTO `tbl_customer` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_address`, `customer_phone`, `customer_active`) VALUES
+(12, 'nemo', 'nemo.tronghieu@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'BLU', '123456789', 1),
+(14, 'nemo', 'nemo@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'cm', '12345678', 0),
+(15, 'Hieu', 'hieu@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'bl', '12345678', 0);
 
 -- --------------------------------------------------------
 
@@ -181,8 +179,6 @@ CREATE TABLE `tbl_product` (
   `product_feature` tinyint(4) NOT NULL,
   `product_category` int(11) NOT NULL,
   `product_brand` int(11) NOT NULL,
-  `product_author` int(11) NOT NULL,
-  `product_view` int(11) NOT NULL DEFAULT 0,
   `published_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `publication_status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -191,14 +187,14 @@ CREATE TABLE `tbl_product` (
 -- Đang đổ dữ liệu cho bảng `tbl_product`
 --
 
-INSERT INTO `tbl_product` (`product_id`, `product_title`, `product_short_description`, `product_long_description`, `product_image`, `product_price`, `product_quantity`, `product_feature`, `product_category`, `product_brand`, `product_author`, `product_view`, `published_date`, `publication_status`) VALUES
-(13, 'cá', '<b style=\"\"><font color=\"#ffcc66\" style=\"\" size=\"5\">tôm</font></b>', '<b style=\"\"><i style=\"\"><font size=\"4\" style=\"background-color: rgb(51, 51, 51);\" color=\"#ffcc66\">Cua mực ốc</font></i></b>', 'lg.jpg', 200, 10, 1, 9, 6, 1, 0, '2022-03-28 14:10:29', 1),
-(14, 'khỉ', 'kó', '<span style=\"background-color: rgb(255, 102, 0); font-weight: bold;\">không</span><div id=\"gtx-trans\" style=\"font-weight: normal; position: absolute; left: -195px; top: 19.3505px;\"><div class=\"gtx-trans-icon\"></div></div>', 'Login.jpg', 22, 22, 0, 1, 2, 1, 0, '2022-03-28 14:23:27', 1),
-(15, 'test', '                                    test product                                ', '                                    test product 2                                ', 'customer.png', 23, 20, 1, 1, 2, 1, 0, '2022-03-29 12:50:17', 1),
-(16, 'test2', 'asd', 'fwe', 'btnclear1.png', 23, 23, 1, 1, 2, 1, 0, '2022-03-29 13:05:19', 1),
-(17, 'sa', 'fdq', 'asd', 'btnlogin.png', 24, 5, 0, 1, 2, 1, 0, '2022-03-29 13:05:37', 1),
-(18, 'asd', 'sd', 'asd', 'save.png', 23, 53, 1, 1, 2, 1, 0, '2022-03-29 13:12:08', 1),
-(19, 'awaw', 'adfs', 'asd', 'password-reset.png', 23, 54, 1, 1, 2, 1, 0, '2022-03-29 13:12:30', 1);
+INSERT INTO `tbl_product` (`product_id`, `product_title`, `product_short_description`, `product_long_description`, `product_image`, `product_price`, `product_quantity`, `product_feature`, `product_category`, `product_brand`, `published_date`, `publication_status`) VALUES
+(13, 'cá', '<b style=\"\"><font color=\"#ffcc66\" style=\"\" size=\"5\">tôm</font></b>', '<b style=\"\"><i style=\"\"><font size=\"4\" style=\"background-color: rgb(51, 51, 51);\" color=\"#ffcc66\">Cua mực ốc</font></i></b>', 'lg.jpg', 200, 10, 1, 9, 6, '2022-03-28 14:10:29', 1),
+(14, 'khỉ', 'kó', '<span style=\"background-color: rgb(255, 102, 0); font-weight: bold;\">không</span><div id=\"gtx-trans\" style=\"font-weight: normal; position: absolute; left: -195px; top: 19.3505px;\"><div class=\"gtx-trans-icon\"></div></div>', 'Login.jpg', 22, 22, 0, 1, 2, '2022-03-28 14:23:27', 1),
+(15, 'test', '                                    test product                                ', '                                    test product 2                                ', 'customer.png', 23, 20, 1, 1, 2, '2022-03-29 12:50:17', 1),
+(17, 'sa', 'fdq', 'asd', 'btnlogin.png', 24, 5, 0, 1, 2, '2022-03-29 13:05:37', 1),
+(18, 'asd', 'sd', 'asd', 'save.png', 23, 53, 1, 1, 2, '2022-03-29 13:12:08', 1),
+(19, 'awaw', 'adfs', 'asd', 'password-reset.png', 23, 54, 1, 1, 2, '2022-03-29 13:12:30', 1),
+(20, 'ad', 'ad', 'asd', 'Splash3.jpg', 32, 32, 1, 1, 2, '2022-03-29 14:43:55', 1);
 
 -- --------------------------------------------------------
 
@@ -232,20 +228,15 @@ CREATE TABLE `tbl_shipping` (
   `shipping_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `shipping_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shipping_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `shipping_city` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `shipping_country` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `shipping_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_zipcode` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `shipping_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_shipping`
 --
 
-INSERT INTO `tbl_shipping` (`shipping_id`, `customer_id`, `shipping_name`, `shipping_email`, `shipping_address`, `shipping_city`, `shipping_country`, `shipping_phone`, `shipping_zipcode`) VALUES
-(11, 0, 'Christine', 'christinem@gmail.com', '245 Ralph Street', 'Steyr', 'Austria', '7456320000', '12500'),
-(12, 0, 'Bob', 'bob@gmail.com', '3556 Denver Avenue', 'Mira Loma', 'Australia', '7458000025', '3006'),
-(13, 0, 'me', 'me@me.com', 'cm bl ', 'cm', 'Bahamas', '12345678', '432453');
+INSERT INTO `tbl_shipping` (`shipping_id`, `customer_id`, `shipping_name`, `shipping_email`, `shipping_address`, `shipping_phone`) VALUES
+(13, 0, 'me', 'me@me.com', 'cm bl ', '12345678');
 
 -- --------------------------------------------------------
 
@@ -266,7 +257,6 @@ CREATE TABLE `tbl_slider` (
 --
 
 INSERT INTO `tbl_slider` (`slider_id`, `slider_title`, `slider_image`, `slider_link`, `publication_status`) VALUES
-(8, 'Kingston', 'test.jpg', 'http://localhost/Shop/', 1),
 (9, 'Logitech', 'logitech.jpg', 'http://localhost/Shop/', 1),
 (10, 'Seagate', 'seagate.jpg', 'http://localhost/Shop/', 1),
 (11, 'hynix', 'hynix.jpg', 'http://localhost/Shop/', 1),
@@ -293,9 +283,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_email`, `user_password`, `user_role`, `created_time`, `updated_time`) VALUES
-(1, 'admin', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1, '2017-11-13 18:31:36', '2017-11-13 18:31:36'),
-(2, 'editor', 'editor@gmail.com', '5aee9dbd2a188839105073571bee1b1f', 2, '2017-11-13 18:31:36', '2017-11-13 18:31:36'),
-(3, 'author', 'author@gmail.com', '02bd92faa38aaa6cc0ea75e59937a1ef', 3, '2017-11-13 18:31:36', '2017-11-13 18:31:36');
+(1, 'admin', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1, '2017-11-13 18:31:36', '2017-11-13 18:31:36');
 
 -- --------------------------------------------------------
 
@@ -313,9 +301,7 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`role_id`, `role_name`) VALUES
-(1, 'Admin'),
-(2, 'Author'),
-(3, 'Editor');
+(1, 'Admin');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -413,7 +399,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT cho bảng `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_option`
@@ -437,7 +423,7 @@ ALTER TABLE `tbl_order_details`
 -- AUTO_INCREMENT cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_promo`
