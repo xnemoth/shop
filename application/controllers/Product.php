@@ -40,7 +40,6 @@ class Product extends CI_Controller
         $data['product_brand']             = $this->input->post('product_brand');
         $data['product_feature']           = $this->input->post('product_feature');
         $data['publication_status']        = $this->input->post('publication_status');
-        $data['product_author']            = $this->session->userdata('user_id');
 
         $this->form_validation->set_rules('product_title', 'tên sản phẩm', 'trim|required');
         $this->form_validation->set_rules('product_short_description', 'mô tả chung', 'trim|required');
@@ -133,7 +132,6 @@ class Product extends CI_Controller
         $data['product_brand']             = $this->input->post('product_brand');
         $data['product_feature']           = $this->input->post('product_feature');
         $data['publication_status']        = $this->input->post('publication_status');
-        $data['product_author']            = $this->session->userdata('user_id');
 
         $product_delete_image = $this->input->post('product_delete_image');
 

@@ -275,6 +275,7 @@ html body li.active a {
 .search-bar {
 	width: 70%;
 	margin-top: 15px !important;
+	margin-right: 5px !important;
 }
 
 .search_box {
@@ -307,6 +308,12 @@ html body li.active a {
 .search-qr {
 	text-align: center;
 	color: #222 !important;
+}
+
+@media  only screen and (max-width: 480px) {
+	.search-qr::placeholder{
+		opacity: 0;
+	}
 }
 
 .suggest-box {
@@ -478,37 +485,43 @@ h2.feature-prd {
 
 /* customer login */
 
- .customer-login-main{
+ .customer-login-main, .customer-register-main, .customer-register-success{
 	 margin-top: 20px !important;
 	 display: flex;
 	 justify-content: center;
-	}
+}
+
+.customer-register-success{
+	margin: 50px 0px !important;
+	padding: 25px 10px !important;
+}
 	
-	.login_panel {
+	.login_panel, .register_account {
 		width: auto !important;
 		border: 2px solid var(--main-clr);
 		border-radius: 7px;
 		background: var(--bg-clr);
  }
 
- .customer-login-form input{
+ .customer-login-form input, .customer-register-form input{
 	 border-radius: 3px;
 	 border-color: var(--blue-main);
 	 color: var(--clr-black) !important;
 	 font-size: 17px !important;
+	 margin: 7px !important;
  }
 
- .login_panel h1{
+ .login_panel h1, .register_account h1{
 	 text-transform: uppercase;
 	 font-weight: bold;
 	 color: var(--blue-main);
 	}
 	
-.login_panel h5{
+.login_panel h5, .register_account h5, .register_account h2{
 	 color: var(--blue-main);
  }
  
-.customer-login-result p{
+.customer-login-result p, .customer-register-result p{
 	font-size: 16px !important;
 	color: red !important;
 }
@@ -516,4 +529,9 @@ h2.feature-prd {
 .note a{
 	text-decoration: none !important;
 	color: var(--main-clr-up) !important;
+}
+
+.register_account input[type="password"]{
+	width: 95%;
+	padding: 8px;
 }

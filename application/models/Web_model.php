@@ -71,6 +71,19 @@ class Web_Model extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_category');
         $this->db->where('publication_status', 1);
+        $this->db->order_by('tbl_category.id', 'DESC');
+        $this->db->limit(4);
+        $info = $this->db->get();
+        return $info->result();
+    }
+    
+    public function get_all_brand()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_brand');
+        $this->db->order_by('tbl_brand.brand_id', 'DESC');
+        $this->db->where('publication_status', 1);
+        $this->db->limit(4);
         $info = $this->db->get();
         return $info->result();
     }
@@ -164,7 +177,6 @@ class Web_Model extends CI_Model
         $this->db->from('tbl_product');
         $this->db->join('tbl_category', 'tbl_category.id=tbl_product.product_category');
         $this->db->join('tbl_brand', 'tbl_brand.brand_id=tbl_product.product_brand');
-        $this->db->join('tbl_user', 'tbl_user.user_id=tbl_product.product_author');
         $this->db->order_by('tbl_product.product_id', 'DESC');
         $this->db->where('tbl_product.publication_status', 1);
         $this->db->like('tbl_product.product_title', $search, 'both');
