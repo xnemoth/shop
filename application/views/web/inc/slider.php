@@ -1,20 +1,4 @@
-<div class="centered-content">
-    <div class="header_bottom">
-        <div class="header_bottom_left">
-            <div class="logo">
-                <a href="<?php echo base_url('/'); ?>"><img class="site-img" src="<?php echo base_url('uploads/'); ?><?php echo get_option('site_logo'); ?>" alt="" /></a>
-            </div>
-            <div class="search-bar">
-                <div class="search_box">
-                    <form method="get" action="<?php echo base_url('search') ?>">
-                        <input class="search-qr" type="text" placeholder="Tìm kiếm sản phẩm" name="search" style="border-radius: 3px;">
-                        <button class="search-btn" type="submit" value="Tìm kiếm">
-                            <ion-icon name="search"></ion-icon>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+
 
         <div class="header_bottom_right_images">
             <!-- FlexSlider -->
