@@ -116,21 +116,35 @@
         </div>
 
         <div class="centered-content">
-    <div class="header_bottom">
-        <div class="header_bottom_left">
-            <div class="logo">
-                <a href="<?php echo base_url('/'); ?>"><img class="site-img" src="<?php echo base_url('uploads/'); ?><?php echo get_option('site_logo'); ?>" alt="" /></a>
-            </div>
-            <div class="search-bar">
-                <div class="search_box">
-                    <form method="get" action="<?php echo base_url('search') ?>">
-                        <input class="search-qr" type="text" placeholder="Tìm kiếm sản phẩm" name="search" style="border-radius: 3px;">
-                        <button class="search-btn" type="submit" value="Tìm kiếm">
-                            <ion-icon name="search"></ion-icon>
-                        </button>
-                    </form>
+            <div class="header_bottom">
+                <div class="header_bottom_left">
+                    <div class="logo" style='background-image: url("<?php echo base_url('uploads/'); ?><?php echo get_option('site_logo'); ?>");'>
+                        <a href="<?php echo base_url('/'); ?>"></a>
+                    </div>
+                    <div class="search-bar">
+                        <div class="search_box">
+                            <form method="get" action="<?php echo base_url('search') ?>">
+                                <input class="search-qr" type="text" placeholder="Tìm kiếm sản phẩm" name="search" style="border-radius: 3px;">
+                                <button class="search-btn" type="submit" value="Tìm kiếm">
+                                    <ion-icon name="search"></ion-icon>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="suggest-header">
+                            <ul>
+                                <li>Sandisk</li>
+                                <li>Logitech</li>
+                                <li>Hynix</li>
+                                <li>Seagate</li>
+                            </ul>
+                            <ul>
+                                <li>RAM</li>
+                                <li>Chuột</li>
+                                <li>Màn hình</li>
+                                <li>Ổ cứng</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/custom.js"></script>
+
+                <script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/custom.js"></script>
