@@ -9,7 +9,7 @@ $route['translate_uri_dashes'] = false;
 //Web Route
 
 $route['product']             = 'web/product';
-$route['single/(:num)']       = 'web/single/$1';
+$route['product/(:num)']       = 'web/single/$1';
 $route['contact']             = 'web/contact';
 $route['cart']                = 'web/cart';
 $route['save/cart']           = 'web/save_cart';

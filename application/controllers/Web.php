@@ -72,7 +72,6 @@ class Web extends CI_Controller
     {
         $data                       = array();
         $data['get_single_product'] = $this->web_model->get_single_product($id);
-        $data['get_all_category']   = $this->web_model->get_all_category();
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/single', $data);
         $this->load->view('web/inc/footer');

@@ -132,16 +132,18 @@
                         </div>
                         <div class="suggest-header">
                             <ul>
-                                <li>Sandisk</li>
-                                <li>Logitech</li>
-                                <li>Hynix</li>
-                                <li>Seagate</li>
+                                <?php
+                                    $get_all_category = $this->web_model->get_all_category();
+                                    foreach ($get_all_category as $single_category) { ?>
+                                    <li><a href="<?php echo base_url('get/category/' . $single_category->id); ?>"><?php echo $single_category->category_name ?></a></li>
+                                <?php } ?>
                             </ul>
                             <ul>
-                                <li>RAM</li>
-                                <li>Chuột</li>
-                                <li>Màn hình</li>
-                                <li>Ổ cứng</li>
+                                <?php 
+                                    $get_all_brand = $this->web_model->get_all_brand();
+                                    foreach ($get_all_brand as $single_brand) { ?>
+                                    <li><a href="<?php echo base_url('get/brand/' . $single_brand->brand_id); ?>"><?php echo $single_brand->brand_name ?></a></li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>

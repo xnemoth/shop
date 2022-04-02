@@ -34,8 +34,8 @@
                     <?php foreach ($single_popular_chunk as $single_popular) { ?>
                         <div class="listview_1_of_2 images_1_of_2">
                             <div class="listimg listimg_2_of_1">
-                                <a href="<?php echo base_url('single/' . $single_popular->product_id); ?>"> <img src="<?php echo base_url() ?>uploads/<?php echo $single_popular->product_image ?>" alt="" /></a>
-                                <span class="button btn-add-suggest"><button class="btn btn-primary add-cart-suggest"><a href="<?php echo base_url('single/' . $single_popular->product_id); ?>">Mua</a></button></span>
+                                <a href="<?php echo base_url('product/' . $single_popular->product_id); ?>"> <img src="<?php echo base_url() ?>uploads/<?php echo $single_popular->product_image ?>" alt="" /></a>
+                                <span class="button btn-add-suggest"><button class="btn btn-primary add-cart-suggest"><a href="<?php echo base_url('product/' . $single_popular->product_id); ?>">Mua</a></button></span>
                             </div>
                             <div class="text list_2_of_1">
                                 <h1><?php echo word_limiter($single_popular->product_title, 2) ?></h1>
