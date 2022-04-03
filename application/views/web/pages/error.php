@@ -1,16 +1,14 @@
-
-
-<div class="main">
+<div class="main error-page">
     <div class="content">
         <div class="error">		
-            <h2>404 Not Found</h2>
-            <p>Your Content Not Found</p>
+            <h2>Ôi không</h2>
+            <p><img src="<?php echo base_url() ?>assets/web/images/koala.png" alt="WRONG" width="200px"></img></p>
+            <p>Nội dung này không tồn tại nữa rồi <img src="<?php echo base_url() ?>assets/web/images/sad.png" alt="sad" width="30px"></img></p>
         </div>  	
-        <div class="clear"></div>
     </div>
 </div>
+</div>
+</div>
 <style>
-    .error{padding:50px 0px}
-    .error h2{color:red;text-align: center;font-size: 50px}
-    .error p{color:green;text-align: center;font-size:30px}
+
 </style>

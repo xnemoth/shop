@@ -72,27 +72,30 @@
 <div class="main single-prd-main">
     <div class="content">
         <div class="section group single-prd-section">
+            <div class="desc span_3_of_2 single_prd-shortdesc">
+                <div class="card bg-primary text-white single-prd-desc">
+                    <div class="card-body" style="font-weight: bold;">
+                        <h2 class="content-product-block"><?php echo $get_single_product->category_name ?> &nbsp; <i class="fas fa-chevron-right"></i> &nbsp; <?php echo $get_single_product->brand_name ?> &nbsp; <i class="fas fa-chevron-right"></i> &nbsp; <?php echo $get_single_product->product_title ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
             <div class="cont-desc span_1_of_2">
                 <div class="grid images_3_of_2 single_prd-img">
                     <img id="prd-img" src="<?php echo base_url('uploads/' . $get_single_product->product_image) ?>" width="100%" height="100%">
-                </div>
-                <div id="zoomresult" class="img-zoom-result"></div>
-                <div class="desc span_3_of_2 single_prd-shortdesc">
-                    <h2><?php echo $get_single_product->product_title ?></h2>
-                    <p><?php echo $get_single_product->product_short_description ?></p>
+                    <p class="shortdesc-content"><?php echo $get_single_product->product_short_description ?></p>
                     <div class="price">
-                        <p>Giá bán: <span><?php echo $this->cart->format_number($get_single_product->product_price) ?> ₫</span></p>
-                        <p>Loại: <span><?php echo $get_single_product->category_name ?></span></p>
-                        <p>Thương hiệu:<span><?php echo $get_single_product->brand_name ?></span></p>
+                        <p><span><?php echo $this->cart->format_number($get_single_product->product_price) ?> ₫</span></p>
                     </div>
                     <div class="add-cart">
-                        <form action="<?php echo base_url('save/cart'); ?>" method="post">
-                            <input type="number" class="buyfield" name="qty" value="1" />
-                            <input type="hidden" class="buyfield" name="product_id" value="<?php echo $get_single_product->product_id ?>" />
-                            <input type="submit" class="buysubmit" name="submit" value="Mua" />
-                        </form>
-                    </div>
+                    <form action="<?php echo base_url('save/cart'); ?>" method="post">
+                        <input class="qtt-to-buy" type="number" class="buyfield" name="qty" value="1" />
+                        <input type="hidden" class="buyfield" name="product_id" value="<?php echo $get_single_product->product_id ?>" />
+                        <input type="submit" class="btn btn-primary buysubmit" name="submit" value="Mua" />
+                    </form>
                 </div>
+                </div>
+                <div id="zoomresult" class="img-zoom-result"></div>
             </div>
             <div class="product-desc">
                 <div class="card bg-primary text-white single-prd-desc">
@@ -101,7 +104,7 @@
                         </h2>
                     </div>
                 </div>
-                <p><?php echo $get_single_product->product_long_description ?></p>
+                <p class="single-prd-longdesc"><?php echo $get_single_product->product_long_description ?></p>
             </div>
         </div>
     </div>

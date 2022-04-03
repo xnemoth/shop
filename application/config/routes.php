@@ -10,13 +10,13 @@ $route['translate_uri_dashes'] = false;
 
 $route['product']             = 'web/product';
 $route['product/(:num)']       = 'web/single/$1';
-$route['contact']             = 'web/contact';
 $route['cart']                = 'web/cart';
 $route['save/cart']           = 'web/save_cart';
 $route['update/cart']         = 'web/update_cart';
 $route['remove/cart']         = 'web/remove_cart';
 $route['user_form']           = 'web/user_form';
 $route['get/category/(:num)'] = 'web/category_post/$1';
+$route['get/brand/(:num)'] = 'web/brand_post/$1';
 
 $route['search']              = 'web/search';
 $route['customer/register']   = 'web/customer_register';
@@ -25,9 +25,6 @@ $route['customer/logout']     = 'web/logout';
 $route['customer/logincheck'] = 'web/customer_logincheck';
 $route['customer/save']       = 'web/customer_save';
 $route['register/success']    = 'web/register_success';
-
-$route['customer/shipping/login']    = 'web/customer_shipping_login';
-$route['customer/shipping/register'] = 'web/customer_shipping_register';
 
 $route['customer/shipping']              = 'web/customer_shipping';
 $route['customer/save/shipping/address'] = 'web/save_shipping_address';

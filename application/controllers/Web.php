@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-use Dompdf\Dompdf;                    
+use Dompdf\Dompdf;
 
 class Web extends CI_Controller
 {
@@ -15,14 +15,6 @@ class Web extends CI_Controller
         $this->load->view('web/inc/header');
         $this->load->view('web/inc/slider');
         $this->load->view('web/pages/home', $data);
-        $this->load->view('web/inc/footer');
-    }
-
-    public function contact()
-    {
-        $data = array();
-        $this->load->view('web/inc/header');
-        $this->load->view('web/pages/contact');
         $this->load->view('web/inc/footer');
     }
 
@@ -43,24 +35,27 @@ class Web extends CI_Controller
         $config['total_rows'] = $this->db->get('tbl_product')->num_rows();
         $config['per_page'] = 8;
         $config['num_links'] = 2;
+        $config['use_page_numbers'] = TRUE;
+        $config['page_query_string'] = FALSE;
+        
         $config['full_tag_open'] = '<ul>';
         $config['full_tag_close'] = '</ul>';
         $config['first_link'] = false;
         $config['last_link'] = false;
-        $config['prev_link'] = '&lt; Previous';
+        $config['prev_link'] = '<i class="fas fa-chevron-right" style="transform: rotate(180deg);"></i>';
         $config['prev_tag_open'] = '<li>';
         $config['prev_tag_close'] = '</li>';
         $config['last_link'] = false;
-        $config['next_link'] = 'Next &gt;';
+        $config['next_link'] = '<i class="fas fa-chevron-right"></i>';
         $config['next_tag_open'] = '<li>';
         $config['next_tag_close'] = '</li>';
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
         $config['cur_tag_open'] = '<li class="active"><a>';
         $config['cur_tag_close'] = '</a></li>';
-
+        
         $this->pagination->initialize($config);
-
+        
         $data                    = array();
         $data['get_all_product'] = $this->web_model->get_all_product_pagi($config['per_page'], $this->uri->segment('3'));
         $this->load->view('web/inc/header');
@@ -88,9 +83,18 @@ class Web extends CI_Controller
     public function category_post($id)
     {
         $this->load->library('pagination');
-        
         $data                    = array();
         $data['get_all_product'] = $this->web_model->get_all_product_by_cat($id);
+        $this->load->view('web/inc/header');
+        $this->load->view('web/pages/product', $data);
+        $this->load->view('web/inc/footer');
+    }
+    
+    public function brand_post($id)
+    {
+        $this->load->library('pagination');
+        $data                    = array();
+        $data['get_all_product'] = $this->web_model->get_all_product_by_brand($id);
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/product', $data);
         $this->load->view('web/inc/footer');
@@ -222,62 +226,6 @@ class Web extends CI_Controller
         }
     }
 
-    public function customer_shipping_login()
-    {
-        $data                      = array();
-        $data['customer_email']    = $this->input->post('customer_email');
-        $data['customer_password'] = md5($this->input->post('customer_password'));
-
-        $this->form_validation->set_rules('customer_email', 'email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('customer_password', 'mật khẩu', 'trim|required');
-
-        if ($this->form_validation->run() == true) {
-            $result = $this->web_model->get_customer_info($data);
-            if ($result) {
-                $this->session->set_userdata('customer_id', $result->customer_id);
-                $this->session->set_userdata('customer_email', $result->customer_email);
-                redirect('customer/shipping');
-            } else {
-                $this->session->set_flashdata('messagelogin', 'Có lỗi xảy ra vui lòng thử lại');
-                redirect('user_form');
-            }
-        } else {
-            $this->session->set_flashdata('messagelogin', validation_errors());
-            redirect('user_form');
-        }
-    }
-
-    public function customer_shipping_register()
-    {
-        $data                      = array();
-        $data['customer_name']     = $this->input->post('customer_name');
-        $data['customer_email']    = $this->input->post('customer_email');
-        $data['customer_password'] = md5($this->input->post('customer_password'));
-        $data['customer_address']  = $this->input->post('customer_address');
-        $data['customer_phone']    = $this->input->post('customer_phone');
-
-        $this->form_validation->set_rules('customer_name', 'tên người dùng', 'trim|required');
-        $this->form_validation->set_rules('customer_email', 'email', 'trim|required|valid_email|is_unique[tbl_customer.customer_email]');
-        $this->form_validation->set_rules('customer_password', 'mật khẩu', 'trim|required');
-        $this->form_validation->set_rules('customer_address', 'địa chỉ', 'trim|required');
-        $this->form_validation->set_rules('customer_phone', 'số điện thoại', 'trim|required');
-
-        if ($this->form_validation->run() == true) {
-            $result = $this->web_model->save_customer_info($data);
-
-            if ($result) {
-                $this->session->set_userdata('customer_id', $result);
-                redirect('customer/shipping');
-            } else {
-                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
-                redirect('user_form');
-            }
-        } else {
-            $this->session->set_flashdata('message', validation_errors());
-            redirect('user_form');
-        }
-    }
-
     public function customer_shipping()
     {
         $data = array();
@@ -341,7 +289,6 @@ class Web extends CI_Controller
             $odata                = array();
             $odata['customer_id'] = $this->session->userdata('customer_id');
             $odata['shipping_id'] = $this->session->userdata('shipping_id');
-            $odata['payment_id']  = $payment_id;
             $tax                  = ($this->cart->total() * 15) / 100;
             $odata['order_total'] = $tax + $this->cart->total();
 
@@ -363,7 +310,7 @@ class Web extends CI_Controller
             }
 
             // if ($payment_method == 'paypal') {
-                
+
             // }
             // if ($payment_method == 'cashon') {
 
@@ -392,7 +339,7 @@ class Web extends CI_Controller
         $data['order_details_info'] = $this->manageorder_model->orderdetails_info_by_id($order_id);
         $data['order_info']         = $this->manageorder_model->order_info_by_id($order_id);
 
-        $this->load->library('pdf');    
+        $this->load->library('pdf');
         $dompdf = new Dompdf();
         $this->pdf->load_view('admin/pages/pdf', $data);
         $this->pdf->setPaper('A4', 'portrait');
@@ -429,5 +376,4 @@ class Web extends CI_Controller
         $this->session->unset_userdata('customer_email');
         redirect('customer/login');
     }
-
 }

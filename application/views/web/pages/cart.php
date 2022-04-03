@@ -80,7 +80,7 @@
                     $customer_id = $this->session->userdata('customer_id');
                     if (empty($customer_id)) {
                         ?>
-                        <a href="<?php echo base_url('user_form') ?>"> <img src="<?php echo base_url() ?>assets/web/images/check.png" alt="" /></a>
+                        <a href="<?php echo base_url('/customer/login') ?>"> <img src="<?php echo base_url() ?>assets/web/images/check.png" alt="" /></a>
                         <?php
                     } elseif (!empty($customer_id)) {
                         ?>

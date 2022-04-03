@@ -100,6 +100,19 @@ class Web_Model extends CI_Model
         $info = $this->db->get();
         return $info->result();
     }
+ 
+    public function get_all_product_by_brand($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_product');
+        $this->db->join('tbl_brand', 'tbl_brand.brand_id=tbl_product.product_brand');
+        $this->db->join('tbl_category', 'tbl_category.id=tbl_product.product_category');
+        $this->db->order_by('tbl_product.product_id', 'DESC');
+        $this->db->where('tbl_product.publication_status', 1);
+        $this->db->where('tbl_brand.brand_id', $id);
+        $info = $this->db->get();
+        return $info->result();
+    }
 
     public function get_product_by_id($id)
     {
@@ -111,7 +124,7 @@ class Web_Model extends CI_Model
         $this->db->where('tbl_product.publication_status', 1);
         $this->db->where('tbl_product.product_id', $id);
         $info = $this->db->get();
-        return $info->row();
+        return $info->num_rows();
     }
 
     public function save_customer_info($data)
