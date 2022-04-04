@@ -823,3 +823,27 @@ h2.feature-prd {
 .shopleft{
 	width: 50% !important;
 }
+
+/* shipping info page*/
+.shipping-form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.shipping-form input{
+	border: 1px solid var(--main-clr-up);
+	border-radius: 3px;
+	color: var(--clr-black) !important;
+	font-size: 17px !important;
+}
+
+.payment-main{
+	margin-top: 20%;
+	margin-bottom: 5%;
+}
+
+.order-success {
+	margin-bottom: 5% !important;
+	margin-top: 20% !important;
+}

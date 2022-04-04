@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-use Dompdf\Dompdf;
+//use Dompdf\Dompdf;
 
 class Web extends CI_Controller
 {
@@ -99,6 +99,15 @@ class Web extends CI_Controller
         $this->load->view('web/pages/product', $data);
         $this->load->view('web/inc/footer');
     }
+
+    public function customer_info(){
+        $data                    = array();
+        $data['user_info'] = $this->web_model->get_self_customer_info($this->session->userdata('customer_id'));
+        $this->load->view('web/inc/header');
+        $this->load->view('web/pages/info', $data);
+        $this->load->view('web/inc/footer');
+    }
+
 
     public function save_cart()
     {
@@ -311,33 +320,11 @@ class Web extends CI_Controller
 
             $this->cart->destroy();
 
-            redirect('payment');
+            redirect('congrat');
         } else {
             $this->session->set_flashdata('message', validation_errors());
             redirect('checkout');
         }
-    }
-
-    public function pdf($order_id)
-    {
-        $data        = array();
-        $order_info  = $this->manageorder_model->order_info_by_id($order_id);
-        $customer_id = $order_info->customer_id;
-        $shipping_id = $order_info->shipping_id;
-        $payment_id  = $order_info->payment_id;
-
-        $data['customer_info']      = $this->manageorder_model->customer_info_by_id($customer_id);
-        $data['shipping_info']      = $this->manageorder_model->shipping_info_by_id($shipping_id);
-        $data['payment_info']       = $this->manageorder_model->payment_info_by_id($payment_id);
-        $data['order_details_info'] = $this->manageorder_model->orderdetails_info_by_id($order_id);
-        $data['order_info']         = $this->manageorder_model->order_info_by_id($order_id);
-
-        $this->load->library('pdf');
-        $dompdf = new Dompdf();
-        $this->pdf->load_view('admin/pages/pdf', $data);
-        $this->pdf->setPaper('A4', 'portrait');
-        $this->pdf->render();
-        $this->pdf->stream("welcome.pdf");
     }
 
     public function search()
@@ -370,3 +357,26 @@ class Web extends CI_Controller
         redirect('customer/login');
     }
 }
+
+
+    // public function pdf($order_id)
+    // {
+    //     $data        = array();
+    //     $order_info  = $this->manageorder_model->order_info_by_id($order_id);
+    //     $customer_id = $order_info->customer_id;
+    //     $shipping_id = $order_info->shipping_id;
+    //     $payment_id  = $order_info->payment_id;
+
+    //     $data['customer_info']      = $this->manageorder_model->customer_info_by_id($customer_id);
+    //     $data['shipping_info']      = $this->manageorder_model->shipping_info_by_id($shipping_id);
+    //     $data['payment_info']       = $this->manageorder_model->payment_info_by_id($payment_id);
+    //     $data['order_details_info'] = $this->manageorder_model->orderdetails_info_by_id($order_id);
+    //     $data['order_info']         = $this->manageorder_model->order_info_by_id($order_id);
+
+    //     $this->load->library('pdf');
+    //     $dompdf = new Dompdf();
+    //     $this->pdf->load_view('admin/pages/pdf', $data);
+    //     $this->pdf->setPaper('A4', 'portrait');
+    //     $this->pdf->render();
+    //     $this->pdf->stream("welcome.pdf");
+    // }

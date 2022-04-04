@@ -148,6 +148,21 @@ class Web_Model extends CI_Model
         return $info->row();
     }
 
+    public function get_self_customer_info($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_customer');
+        $this->db->where('tbl_customer.customer_id', $id);;
+        $info = $this->db->get();
+        return $info->row();
+    }
+
+    public function update_self_customer_info($data, $id)
+    {
+        $this->db->where('customer_id', $id);
+        return $this->db->update('tbl_customer', $data);
+    }
+
     public function save_order_info($data)
     {
         $this->db->insert('tbl_order', $data);

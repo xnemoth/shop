@@ -29,9 +29,9 @@ $route['register/success']    = 'web/register_success';
 $route['customer/shipping']              = 'web/customer_shipping';
 $route['customer/save/shipping/address'] = 'web/save_shipping_address';
 $route['checkout']                       = 'web/checkout';
-$route['payment']                        = 'web/payment';
+$route['congrat']                        = 'web/payment';
 $route['save/order']                     = 'web/save_order';
-$route['check_email']                    = 'web/check_email';
+$route['user/info']                    = 'web/customer_info';
 
 //Admin Panel Route
 $route['dashboard']            = 'admin/index';

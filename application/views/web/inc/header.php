@@ -68,7 +68,7 @@
                 ?>
                     <li class="list" style="--clr:#1a94ff;">
                         <div>
-                            <a href="#" title="Tài khoản">
+                            <a href="<?php echo base_url('/user/info'); ?>" title="Tài khoản">
                                 <span class="icon">
                                     <ion-icon name="person-outline"></ion-icon>
                                 </span>
