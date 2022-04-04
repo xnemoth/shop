@@ -285,12 +285,12 @@ class Web extends CI_Controller
         $this->form_validation->set_rules('payment', 'phương thức thanh toán', 'trim|required');
 
         if ($this->form_validation->run() == true) {
-            $payment_id           = $this->web_model->save_payment_info($data);
             $odata                = array();
             $odata['customer_id'] = $this->session->userdata('customer_id');
             $odata['shipping_id'] = $this->session->userdata('shipping_id');
             $tax                  = ($this->cart->total() * 15) / 100;
             $odata['order_total'] = $tax + $this->cart->total();
+            $odata['date_created'] = date('Y-m-d');
 
             $order_id = $this->web_model->save_order_info($odata);
 
@@ -308,13 +308,6 @@ class Web extends CI_Controller
                 $oddata['product_image']          = $oddatas['options']['product_image'];
                 $this->web_model->save_order_details_info($oddata);
             }
-
-            // if ($payment_method == 'paypal') {
-
-            // }
-            // if ($payment_method == 'cashon') {
-
-            // }
 
             $this->cart->destroy();
 

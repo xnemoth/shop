@@ -124,7 +124,7 @@ class Web_Model extends CI_Model
         $this->db->where('tbl_product.publication_status', 1);
         $this->db->where('tbl_product.product_id', $id);
         $info = $this->db->get();
-        return $info->num_rows();
+        return $info->row();
     }
 
     public function save_customer_info($data)
@@ -146,12 +146,6 @@ class Web_Model extends CI_Model
         $this->db->where($data);
         $info = $this->db->get();
         return $info->row();
-    }
-
-    public function save_payment_info($data)
-    {
-        $this->db->insert('tbl_payment', $data);
-        return $this->db->insert_id();
     }
 
     public function save_order_info($data)

@@ -3,7 +3,7 @@
 <div class="main">
     <div class="content" style="text-align: center">
         <div class="register_account" style="text-align:center;display:inline-block;float: none">
-            <h3>Your Shipping Address</h3>
+            <h3>Địa chỉ giao hàng</h3>
             <style type="text/css">
                 #result{color:red;padding: 5px}
                 #result p{color:red}
@@ -17,42 +17,27 @@
                         <tr>
                             <td>
                                 <div>
-                                    <input type="text" name="shipping_name" placeholder="Enter Your Name">
+                                    <input type="text" name="shipping_name" placeholder="Họ và tên người nhận">
                                 </div>
 
-
                                 <div>
-                                    <input type="text" name="shipping_city" placeholder="Enter Your City">
-                                </div>
-                                <div>
-                                    <input type="text" name="shipping_phone" placeholder="Enter Your Phone">
-                                </div>
-                                <div>
-                                    <input type="text" name="shipping_zipcode" placeholder="Enter Your ZipCode">
+                                    <input type="text" name="shipping_phone" placeholder="Số điện thoại người nhận">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="shipping_email" placeholder="Enter Your Email">
+                                    <input type="text" name="shipping_email" placeholder="Email người nhận">
                                 </div>
                                         
 
                                 <div>
-                                    <input type="text" name="shipping_address" placeholder="Enter Your Address">
+                                    <input type="text" name="shipping_address" placeholder="Địa chỉ nhận hàng">
                                 </div>
-                                
-                                <div>
-                                    <select id="country" name="shipping_country" class="frm-field required">
-
-                                    </select>
-                                </div>		
-
                                 
                             </td>
                         </tr> 
                     </tbody></table> 
-                <div class="search"><div><button class="grey">Create Account</button></div></div>
-                <p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
+                <div class="search"><div><button class="btn btn-primary">Xác nhận</button></div></div>
                 <div class="clear"></div>
             </form>
         </div>  	

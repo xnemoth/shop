@@ -763,3 +763,59 @@ h2.feature-prd {
 	background: var(--main-clr);
 	border-radius: 3px;
 }
+
+/* search page */
+.main-search{
+	padding: 1% !important;
+}
+
+.main-search h3{
+	font-size: 1rem !important;
+	text-transform: uppercase;
+	margin-bottom: 0px !important;
+}
+
+/* cart */
+
+.cartpage{
+	border-color: var(--main-clr) !important;
+}
+
+.cartpage h2{
+	border-bottom: none !important;
+}
+
+.cart-header{
+	padding: 1% !important;
+}
+
+.cart-header-box{
+	margin-bottom: 10px;
+}
+
+.empty-cart-noti, .empty-cart-noti h2{
+	text-align: center;
+	width: 100%;
+	color: var(--main-clr-up);
+}
+
+.tblone th{
+	background: var(--main-clr) none repeat scroll 0 0 !important;
+	color: var(--blue-main) !important;
+}
+
+.form-action-rm.hidden{
+	display: none;
+}
+
+.shopping img{
+	width: 100px;
+}
+
+.shopping p{
+	text-align: center;
+}
+
+.shopping h2{
+	color: var(--blue-main);
+}

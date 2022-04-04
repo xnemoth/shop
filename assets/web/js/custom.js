@@ -21,3 +21,4 @@ list.forEach((item) => {
 	item.addEventListener('mouseover', activeLink);
 	item.addEventListener('mouseout', removeLink)
 })
+  
