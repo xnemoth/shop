@@ -34,15 +34,15 @@
                                     <form action="<?php echo base_url('update/cart'); ?>" method="post">
                                         <input type="number" name="qty" value="<?php echo $cart_items['qty'] ?>" />
                                         <input type="hidden" name="rowid" value="<?php echo $cart_items['rowid'] ?>" />
-                                        <input type="submit" name="submit" value="Cập nhật" />
+                                        <button class="btn btn-primary" type="submit" name="submit">Cập nhật</button>
                                     </form>
                                 </td>
                                 <td><?php echo $this->cart->format_number($cart_items['subtotal']) ?> ₫</td>
 
-                                <td id="rmCols" class="form-action-rm hidden">
-                                    <form action="<?php echo base_url('remove/cart'); ?>" method="post">
+                                <td>
+                                    <form id="rmCols" class="form-action-rm hidden" action="<?php echo base_url('remove/cart'); ?>" method="post">
                                         <input type="hidden" name="rowid" value="<?php echo $cart_items['rowid'] ?>" />
-                                        <input type="submit" name="submit" value="X" />
+                                        <button class="btn btn-warning" type="submit" name="submit">Xóa</button>
                                     </form>
                                 </td>
                             </tr>
@@ -87,6 +87,7 @@
                 <div class="shopright">
                     <?php
                     $customer_id = $this->session->userdata('customer_id');
+                    if ($this->cart->total_items()){
                     if (empty($customer_id)) {
                     ?>
                     <h2><p>Đăng nhập để đặt hàng<p></h2>
@@ -98,7 +99,13 @@
                         <p><a href="<?php echo base_url('customer/shipping') ?>"> <img src="<?php echo base_url() ?>assets/web/images/checkout.png" alt="Thanh toán" /></a></p>
                     <?php
                     }
+                }else {
                     ?>
+                    <style type="text/css">
+                        .shopleft{width: 100% !important;}
+                        .shopright{display: hidden;}
+                    </style>
+                    <?php }?>
                 </div>
             </div>
         </div>
