@@ -16,7 +16,7 @@
             <div class="section group">
                 <?php foreach ($chunk_products as $single_products) { ?>
                     <div class="grid_1_of_4 images_1_of_4">
-                        <a href="<?php echo base_url('product/' . $single_products->product_id); ?>"><img style="width:250px;height:250px" src="<?php echo base_url('uploads/' . $single_products->product_image) ?>" alt="" /></a>
+                        <a href="<?php echo base_url('product/' . $single_products->product_id); ?>"><img src="<?php echo base_url('uploads/' . $single_products->product_image) ?>" alt="" /></a>
 
                         <h2><?php echo $single_products->product_title ?></h2>
 

@@ -72,7 +72,7 @@ class Web_Model extends CI_Model
         $this->db->from('tbl_category');
         $this->db->where('publication_status', 1);
         $this->db->order_by('tbl_category.id', 'DESC');
-        $this->db->limit(4);
+        $this->db->limit(3);
         $info = $this->db->get();
         return $info->result();
     }
@@ -83,7 +83,7 @@ class Web_Model extends CI_Model
         $this->db->from('tbl_brand');
         $this->db->order_by('tbl_brand.brand_id', 'DESC');
         $this->db->where('publication_status', 1);
-        $this->db->limit(4);
+        $this->db->limit(3);
         $info = $this->db->get();
         return $info->result();
     }

@@ -5,7 +5,7 @@
                 <div class="card bg-primary text-white cart-header-box">
                     <div class="card-body cart-header" style="font-weight: bold;">
                         <h2 class="content-product-block">
-                            Giỏ hàng
+                        <img src="<?php echo base_url() ?>assets/web/images/carts.png" alt="carts" width="30px"></img> Giỏ hàng
                         </h2>
                     </div>
                 </div>

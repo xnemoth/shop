@@ -137,8 +137,6 @@
                                     foreach ($get_all_category as $single_category) { ?>
                                     <li><a href="<?php echo base_url('get/category/' . $single_category->id); ?>"><?php echo $single_category->category_name ?></a></li>
                                 <?php } ?>
-                            </ul>
-                            <ul>
                                 <?php 
                                     $get_all_brand = $this->web_model->get_all_brand();
                                     foreach ($get_all_brand as $single_brand) { ?>
