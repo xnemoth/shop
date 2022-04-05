@@ -18,11 +18,14 @@
                     <div class="grid_1_of_4 images_1_of_4">
                         <a href="<?php echo base_url('product/' . $single_products->product_id); ?>"><img src="<?php echo base_url('uploads/' . $single_products->product_image) ?>" alt="" /></a>
 
-                        <h2><?php echo $single_products->product_title ?></h2>
+                        <div class="list-product-info">
+                            <h2><?php echo $single_products->product_title ?></h2>
 
-                        <p class="prd_price"><span class="price"><?php echo $this->cart->format_number($single_products->product_price) ?> ₫</span></p>
+                            <p class="prd_price"><span class="price"><?php echo $this->cart->format_number($single_products->product_price) ?> ₫</span></p>
+                        </div>
 
-                        <span class="button btn_viewprd-from-list"><button class="btn btn-primary btn-view-prdl"><a href="<?php echo base_url('product/' . $single_products->product_id); ?>" class="details">Xem</a></button></span>
+                        <span class="button btn_viewprd-from-list"><button class="btn btn-primary btn-view-prdl"><a href="<?php echo base_url('product/' . $single_products->product_id); ?>" class="details">Xem</a></button>
+                        </span>
                     </div>
                 <?php
                 }

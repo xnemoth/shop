@@ -35,9 +35,9 @@
 
 <body>
     <div class="wrap">
-        <div class="navigation">
+        <div class="navigation navi-left-bar">
             <div class="menuToggle"></div>
-            <ul>
+            <ul class="navi-left-bar-ul">
                 <li class="list  <?php
                                     if ($this->uri->uri_string() == '') {
                                         echo "active";
@@ -118,7 +118,8 @@
         <div class="centered-content">
             <div class="header_bottom">
                 <div class="header_bottom_left">
-                    <div class="logo" style='background-image: url("<?php echo base_url('uploads/'); ?><?php echo get_option('site_logo'); ?>");'>
+                    <div class="logo">
+                        <img src="<?php echo base_url('uploads/'); ?><?php echo get_option('site_logo'); ?>" alt="nemoth">
                         <a href="<?php echo base_url('/'); ?>"></a>
                     </div>
                     <div class="search-bar">

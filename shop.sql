@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 31, 2022 lúc 07:44 PM
+-- Thời gian đã tạo: Th4 05, 2022 lúc 05:59 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 7.4.27
 
@@ -40,7 +40,9 @@ CREATE TABLE `tbl_brand` (
 
 INSERT INTO `tbl_brand` (`brand_id`, `brand_name`, `brand_description`, `publication_status`) VALUES
 (2, 'Samsung', 'Samsung desc', 1),
-(6, 'Razer', 'Razer Desc', 1);
+(6, 'Razer', 'Razer Desc', 1),
+(7, 'Logitech', 'Logitech', 1),
+(8, 'Seagate', 'Seagate', 1);
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,7 @@ CREATE TABLE `tbl_option` (
 --
 
 INSERT INTO `tbl_option` (`option_id`, `site_logo`, `site_favicon`, `site_contact_num`, `site_facebook_link`, `site_github_link`, `site_email_link`) VALUES
-(1, 'Splash2.jpg', 'book.png', '363354261', 'https://www.facebook.com/hieun1042', 'https://github.com/xnemoth/xnemoth.github.io.git', 'tronghieu1042@gmail.com');
+(1, 'Site_logo1.jpg', 'Site_favicon.jpg', '363354261', 'https://www.facebook.com/hieun1042', 'https://github.com/xnemoth/xnemoth.github.io.git', 'tronghieu1042@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,9 @@ INSERT INTO `tbl_order_details` (`order_details_id`, `order_id`, `product_id`, `
 (8, 11, 2, 'Face Covers 3-Pack', 1250, 1, 'feature-pic2.jpg'),
 (9, 11, 1, 'Ultraboost DNA Black Python Shoes', 19500, 1, 'feature-pic1.jpg'),
 (10, 12, 11, '23', 233, 1, 'btnclear.png'),
-(11, 12, 4, 'AUE60 Crystal 4K UHD', 695000, 1, 'pic3.jpg');
+(11, 12, 4, 'AUE60 Crystal 4K UHD', 695000, 1, 'pic3.jpg'),
+(12, 13, 14, 'khỉ', 22, 1, 'Login.jpg'),
+(13, 16, 13, 'cá', 200, 1, 'lg.jpg');
 
 -- --------------------------------------------------------
 
@@ -194,7 +198,11 @@ INSERT INTO `tbl_product` (`product_id`, `product_title`, `product_short_descrip
 (17, 'sa', 'fdq', 'asd', 'btnlogin.png', 24, 5, 0, 1, 2, '2022-03-29 13:05:37', 1),
 (18, 'asd', 'sd', 'asd', 'save.png', 23, 53, 1, 1, 2, '2022-03-29 13:12:08', 1),
 (19, 'awaw', 'adfs', 'asd', 'password-reset.png', 23, 54, 1, 1, 2, '2022-03-29 13:12:30', 1),
-(20, 'ad', 'ad', 'asd', 'Splash3.jpg', 32, 32, 1, 1, 2, '2022-03-29 14:43:55', 1);
+(20, 'ad', 'ad', 'asd', 'Splash3.jpg', 32, 32, 1, 1, 2, '2022-03-29 14:43:55', 1),
+(21, 'as', 'asd', 'asd', 'ThankYou.png', 12, 1, 0, 2, 6, '2022-04-03 09:56:02', 1),
+(22, 'asd', 'sd', 'as', 'myInfo.jpg', 23, 12, 1, 1, 7, '2022-04-03 09:56:20', 1),
+(23, 'ca', 'as', 'asd', 'CNTT_BLU.png', 23, 2, 0, 2, 8, '2022-04-03 09:56:40', 1),
+(24, 'asd', 'asdas', '<sub>asd</sub>', 'blu.png', 23, 4, 1, 1, 6, '2022-04-03 09:57:00', 1);
 
 -- --------------------------------------------------------
 
@@ -236,7 +244,9 @@ CREATE TABLE `tbl_shipping` (
 --
 
 INSERT INTO `tbl_shipping` (`shipping_id`, `customer_id`, `shipping_name`, `shipping_email`, `shipping_address`, `shipping_phone`) VALUES
-(13, 0, 'me', 'me@me.com', 'cm bl ', '12345678');
+(17, 0, 'ảg', 'tgfg@gdfg.com', 'dfwsdf', '2323'),
+(18, 0, 'tt', 'asda@asd.om', 'asda', 'sdad'),
+(19, 0, 'hieu', 'hieu@hieu.hieu', 'hh', '12345678');
 
 -- --------------------------------------------------------
 
@@ -257,10 +267,12 @@ CREATE TABLE `tbl_slider` (
 --
 
 INSERT INTO `tbl_slider` (`slider_id`, `slider_title`, `slider_image`, `slider_link`, `publication_status`) VALUES
-(9, 'Logitech', 'logitech.jpg', 'http://localhost/Shop/', 1),
-(10, 'Seagate', 'seagate.jpg', 'http://localhost/Shop/', 1),
-(11, 'hynix', 'hynix.jpg', 'http://localhost/Shop/', 1),
-(13, 'intel', 'intel.jpg', 'http://localhost/Shop/', 1);
+(19, 'Intel', 'intel.jpg', 'http://localhost/Shop/', 1),
+(20, 'Hynix', 'hynix.jpg', 'http://localhost/Shop/', 1),
+(21, 'Kingston', 'kingston.png', 'http://localhost/Shop/', 1),
+(22, 'Logitech', 'logitech.jpg', 'http://localhost/Shop/', 1),
+(23, 'Seagate', 'seagate.png', 'http://localhost/Shop/', 1),
+(24, 'Samsung', 'Samsung.jpg', 'http://localhost/Shop/', 1);
 
 -- --------------------------------------------------------
 
@@ -387,7 +399,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT cho bảng `tbl_brand`
 --
 ALTER TABLE `tbl_brand`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`
@@ -399,7 +411,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT cho bảng `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_option`
@@ -411,19 +423,19 @@ ALTER TABLE `tbl_option`
 -- AUTO_INCREMENT cho bảng `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order_details`
 --
 ALTER TABLE `tbl_order_details`
-  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_promo`
@@ -435,13 +447,13 @@ ALTER TABLE `tbl_promo`
 -- AUTO_INCREMENT cho bảng `tbl_shipping`
 --
 ALTER TABLE `tbl_shipping`
-  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_slider`
 --
 ALTER TABLE `tbl_slider`
-  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_user`
