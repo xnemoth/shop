@@ -32,6 +32,7 @@ $route['checkout']                       = 'web/checkout';
 $route['congrat']                        = 'web/payment';
 $route['save/order']                     = 'web/save_order';
 $route['user/info']                    = 'web/customer_info';
+$route['user/update/info']                    = 'web/customer_update_info';
 
 //Admin Panel Route
 $route['dashboard']            = 'admin/index';

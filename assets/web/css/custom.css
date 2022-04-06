@@ -585,7 +585,7 @@ h2.feature-prd {
 		background: var(--bg-clr);
  }
 
- .customer-login-form input, .customer-register-form input{
+ .customer-login-form input, .customer-register-form input, .customer-info-form input{
 	 border-radius: 3px;
 	 border-color: var(--blue-main);
 	 color: var(--clr-black) !important;

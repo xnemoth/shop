@@ -235,6 +235,41 @@ class Web extends CI_Controller
         }
     }
 
+    public function customer_update_info()
+    {
+        $data                      = array();
+        $check_data                      = array();
+        $check_data['customer_id'] = $this->session->userdata('customer_id');
+
+        $data['customer_name']     = $this->input->post('customer_name');
+        if($this->input->post('customer_password') !== ""){
+            $check_data['customer_old_pwd'] =  md5($this->input->post('customer_password'));
+            $this->form_validation->set_rules('customer_new_password', 'mật khẩu', 'trim|required');
+            if($this->web_model->get_customer_info($data)){
+                $data['customer_password'] = md5($this->input->post('customer_new_password'));
+            }
+        }
+        $data['customer_address']  = $this->input->post('customer_address');
+        $data['customer_phone']    = $this->input->post('customer_phone');
+
+        $this->form_validation->set_rules('customer_name', 'họ và tên', 'trim|required');
+        $this->form_validation->set_rules('customer_address', 'địa chỉ', 'trim|required');
+        $this->form_validation->set_rules('customer_phone', 'số điện thoại', 'trim|required');
+
+        if ($this->form_validation->run() == true) {
+            $result = $this->web_model->update_self_customer_info($data,$check_data['customer_id']);
+            if ($result) {
+                $this->session->set_flashdata('message', 'Cập nhật thông tin thành công!');
+                redirect('user/info');
+            } else {
+                $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại!');
+            }
+        } else {
+            $this->session->set_flashdata('message', validation_errors());
+            redirect('user/info');
+        }
+    }
+
     public function customer_shipping()
     {
         $data = array();
