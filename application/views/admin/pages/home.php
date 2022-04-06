@@ -71,9 +71,9 @@
                 unset($_POST["date_create"]);
             }
             ?>
-            <h1><?php $query = $this->db->query('SELECT SUM( order_total)as total FROM tbl_order' . $temp . ';')->row();
-                echo $query->total;
-                unset($_POST["test"]);
+            <h1><?php $query = $this->db->query('SELECT SUM( order_total) as total FROM tbl_order' . $temp . ';')->row();
+                echo number_format($query->total, 1, '.', '') . ' ₫';
+                unset($_POST["date_create"]);
                 $temp = '';
                 ?></h1>
             <h4>Tổng thu nhập</h4>

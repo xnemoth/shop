@@ -4,21 +4,28 @@
 
     <ul id="breadcrumb-custom" class="breadcrumb">
         <li>
-            <a href="<?php echo base_url('dashboard') ?>"><i class="icon-home"></i>Trang chủ</a> 
+            <a href="<?php echo base_url('dashboard') ?>"><i class="icon-home"></i>Trang chủ</a>
             <i class="icon-angle-right"></i>
         </li>
         <li>
-            <a href="<?php echo base_url('manage/order')?>">Đơn hàng</a>
+            <a href="<?php echo base_url('manage/order') ?>">Đơn hàng</a>
             <i class="icon-angle-right"></i>
         </li>
         <li><a href="<?php echo base_url('order/details') ?>">Chi tiết</a></li>
     </ul>
 
-    <div class="row-fluid sortable">		
+    <div class="row-fluid sortable">
         <div class="box span12">
             <style type="text/css">
-                #result{color:red;padding: 5px}
-                #result p{color:red; text-align: center;}
+                #result {
+                    color: red;
+                    padding: 5px
+                }
+
+                #result p {
+                    color: red;
+                    text-align: center;
+                }
             </style>
             <div id="result">
                 <p><?php echo $this->session->flashdata('message'); ?></p>
@@ -68,7 +75,9 @@
                         </tr>
                     </table>
                 </div>
-                <div class="span4" style="margin: 15px 0px 20px;width: 100%;"><h1 style="color: blue;text-align:center;font-weight: bold;">CHI TIẾT ĐƠN HÀNG</h1></div>
+                <div class="span4" style="margin: 15px 0px 20px;width: 100%;">
+                    <h1 style="color: blue;text-align:center;font-weight: bold;">CHI TIẾT ĐƠN HÀNG</h1>
+                </div>
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
@@ -79,35 +88,56 @@
                             <th>Số lượng</th>
                             <th>Thành tiền</th>
                         </tr>
-                    </thead>   
+                    </thead>
                     <tbody>
                         <?php
                         $i = 0;
                         foreach ($order_details_info as $single_order_details) {
                             $i++;
-                            ?>
+                        ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $single_order_details->product_name ?></td>
-                                <td><img src="<?php echo base_url('uploads/'.$single_order_details->product_image);?>" style="width:200px;height:100px"/></td>
-                                <td><?php echo $this->cart->format_number($single_order_details->product_price)?> </td>
+                                <td><img src="<?php echo base_url('uploads/' . $single_order_details->product_image); ?>" style="width:200px;height:100px" /></td>
+                                <td><?php echo $this->cart->format_number($single_order_details->product_price) ?> </td>
                                 <td><?php echo $single_order_details->product_sales_quantity ?></td>
                                 <td><?php echo $this->cart->format_number($single_order_details->product_price * $single_order_details->product_sales_quantity) ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
                     <tfooter>
-                        <td colspan="5">Tổng tiền</td>
-                        <td><?php echo $this->cart->format_number($order_info->order_total)?> </td>
+                        <tr>
+                            <td colspan="5">Tổng cộng</td>
+                            <td><?php
+                                $sale = $this->cart->format_number($order_info->sale_off);
+                                $total = $this->cart->format_number($order_info->order_total);
+                                echo $total;
+                                ?>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Giảm giá</td>
+                            <td><?php echo $sale < 100 ? $sale . ' %' : $sale . ' ₫'; ?> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Thanh toán</td>
+                            <td><?php if ($sale > 100) {
+                                    echo $total - $sale;
+                                } else {
+                                    echo $total - ($sale / 100) * $total;
+                                } ?> </td>
+                        </tr>
                     </tfooter>
-                </table>            
+                </table>
             </div>
-        </div><!--/span-->
+        </div>
+        <!--/span-->
 
-    </div><!--/row-->
+    </div>
+    <!--/row-->
 
 
 
-</div><!--/.fluid-container-->
+</div>
+<!--/.fluid-container-->
 
 <!-- end: Content -->

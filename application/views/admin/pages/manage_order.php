@@ -29,6 +29,7 @@
                             <th>Khách hàng</th>
                             <th>Số điện thoại</th>
                             <th>Email</th>
+                            <th>Ngày tạo</th>
                             <th>Thanh toán</th>
                             <th>Thao tác</th>
                         </tr>
@@ -44,6 +45,7 @@
                             <td><?php echo $single_order->customer_name?></td>
                             <td><?php echo $single_order->customer_phone?></td>
                             <td><?php echo $single_order->customer_email?></td>
+                            <td><?php echo $single_order->date_created?></td>
                             <td><?php echo $this->cart->format_number($single_order->order_total)?></td>
                             <td>
                                 

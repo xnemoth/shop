@@ -717,6 +717,8 @@ h2.feature-prd {
 	  padding: 7px !important;
 	  margin-bottom: 1%;
 	  border-radius: 25px !important;
+	  background: url(../images/carts.png) no-repeat 1 1 !important;
+	  background-size: 40px !important;
   }
 
   .single-prd-longdesc{
@@ -844,7 +846,7 @@ h2.feature-prd {
 }
 
 .tblone th{
-	background: var(--main-clr) none repeat scroll 0 0 !important;
+	background: var(--bg-clr) none repeat scroll 0 0 !important;
 	color: var(--blue-main) !important;
 }
 

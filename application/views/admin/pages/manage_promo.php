@@ -48,7 +48,16 @@
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td class="center"><?php echo $single_promo->promo_code; ?></td>
-                                <td class="center"><?php echo $single_promo->promo_value; ?> %</td>
+                                <td class="center">
+                                    <?php
+                                    $prm_value = $single_promo->promo_value;
+                                    if($prm_value > 100){
+                                        echo $prm_value . ' ₫';
+                                    }else{
+                                        echo $prm_value . ' %';
+                                    }
+                                    ?>
+                                </td>
                                 <td class="center">
                                     <?php if ($single_promo->active_code == 1) { ?>
                                         <span class="label label-success" style="border-radius: 3px;">Hoạt động</span>
@@ -93,7 +102,7 @@
                         <div class="control-group" style="margin-left: 200px;">
                             <label class="control-label custom-admin-label" for="textarea2">Giá trị giảm</label>
                             <div class="controls">
-                            <input class="span6 typeahead" name="promo_value" id="fileInput" type="number" />
+                                <input class="span6 typeahead" name="promo_value" id="fileInput" type="number" />
                             </div>
                         </div>
 

@@ -37,7 +37,7 @@ class Web extends CI_Controller
         $config['num_links'] = 2;
         $config['use_page_numbers'] = TRUE;
         $config['page_query_string'] = FALSE;
-        
+
         $config['full_tag_open'] = '<ul>';
         $config['full_tag_close'] = '</ul>';
         $config['first_link'] = false;
@@ -53,9 +53,9 @@ class Web extends CI_Controller
         $config['num_tag_close'] = '</li>';
         $config['cur_tag_open'] = '<li class="active"><a>';
         $config['cur_tag_close'] = '</a></li>';
-        
+
         $this->pagination->initialize($config);
-        
+
         $data                    = array();
         $data['get_all_product'] = $this->web_model->get_all_product_pagi($config['per_page'], $this->uri->segment('3'));
         $this->load->view('web/inc/header');
@@ -89,7 +89,7 @@ class Web extends CI_Controller
         $this->load->view('web/pages/product', $data);
         $this->load->view('web/inc/footer');
     }
-    
+
     public function brand_post($id)
     {
         $this->load->library('pagination');
@@ -100,7 +100,8 @@ class Web extends CI_Controller
         $this->load->view('web/inc/footer');
     }
 
-    public function customer_info(){
+    public function customer_info()
+    {
         $data                    = array();
         $data['user_info'] = $this->web_model->get_self_customer_info($this->session->userdata('customer_id'));
         $this->load->view('web/inc/header');
@@ -249,10 +250,10 @@ class Web extends CI_Controller
         $check_data['customer_id'] = $this->session->userdata('customer_id');
 
         $data['customer_name']     = $this->input->post('customer_name');
-        if($this->input->post('customer_password') !== ""){
+        if ($this->input->post('customer_password') !== "") {
             $check_data['customer_old_pwd'] =  md5($this->input->post('customer_password'));
             $this->form_validation->set_rules('customer_new_password', 'mật khẩu', 'trim|required');
-            if($this->web_model->get_customer_info($data)){
+            if ($this->web_model->get_customer_info($data)) {
                 $data['customer_password'] = md5($this->input->post('customer_new_password'));
             }
         }
@@ -264,7 +265,7 @@ class Web extends CI_Controller
         $this->form_validation->set_rules('customer_phone', 'số điện thoại', 'trim|required');
 
         if ($this->form_validation->run() == true) {
-            $result = $this->web_model->update_self_customer_info($data,$check_data['customer_id']);
+            $result = $this->web_model->update_self_customer_info($data, $check_data['customer_id']);
             if ($result) {
                 $this->session->set_flashdata('message', 'Cập nhật thông tin thành công!');
                 redirect('user/info');
@@ -339,16 +340,12 @@ class Web extends CI_Controller
             $odata                = array();
             $odata['customer_id'] = $this->session->userdata('customer_id');
             $odata['shipping_id'] = $this->session->userdata('shipping_id');
-            $odata['sale_off']                  = $this->session->flashdata('promo_value');
-            if ($odata['sale_off'] > 100) {
-                $odata['order_total'] = $this->cart->total() - $odata['sale_off'];
-            } else {
-                $odata['order_total'] = $this->cart->total() - $odata['sale_off']* $this->cart->total();
-            }
+            $odata['sale_off']                  = $this->session->userdata('sale_off');
+            $odata['order_total'] = $this->cart->total();
             $odata['date_created'] = date('Y-m-d');
 
             $order_id = $this->web_model->save_order_info($odata);
-
+            $this->session->unset_userdata('sale_off');
             $oddata = array();
 
             $myoddata = $this->cart->contents();

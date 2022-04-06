@@ -18,7 +18,7 @@
                             <th width="15%">Giá</th>
                             <th width="20%">Số lượng</th>
                             <th width="15%">Tổng tiền</th>
-                            <th width="5%"><button class="btn btn-primary" id="rmAction">Loại bỏ</button></th>
+                            <th width="5%"><button class="btn btn-warning" id="rmAction">Loại bỏ</button></th>
                         </tr>
                         <?php
                         $i = 0;
@@ -69,6 +69,7 @@
                             <td>
                                 <?php
                                 $sale_value = $this->session->flashdata('promo_value');
+                                $this->session->set_userdata('sale_off', $sale_value);
                                 if (!$sale_value) {
                                     echo '0 ₫';
                                     $total_oder = $this->cart->format_number($this->cart->total());

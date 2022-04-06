@@ -40,15 +40,6 @@ class Manageorder_Model extends CI_Model
         return $result->row();
     }
 
-    public function payment_info_by_id($payment_id)
-    {
-        $this->db->select('*');
-        $this->db->from('tbl_payment');
-        $this->db->where('payment_id', $payment_id);
-        $result = $this->db->get();
-        return $result->row();
-    }
-
     public function orderdetails_info_by_id($order_id)
     {
         $this->db->select('*');
