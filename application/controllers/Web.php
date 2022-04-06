@@ -143,6 +143,13 @@ class Web extends CI_Controller
         redirect('cart');
     }
 
+    public function get_promo()
+    {
+        $data = $this->web_model->get_promo_value($this->input->post('promo_code'));
+        $this->session->set_flashdata('promo_value', $data->promo_value);
+        redirect('cart');
+    }
+
     public function register_success()
     {
         $customer_name = $this->session->flashdata('customer_name');
@@ -332,8 +339,12 @@ class Web extends CI_Controller
             $odata                = array();
             $odata['customer_id'] = $this->session->userdata('customer_id');
             $odata['shipping_id'] = $this->session->userdata('shipping_id');
-            $tax                  = ($this->cart->total() * 15) / 100;
-            $odata['order_total'] = $tax + $this->cart->total();
+            $odata['sale_off']                  = $this->session->flashdata('promo_value');
+            if ($odata['sale_off'] > 100) {
+                $odata['order_total'] = $this->cart->total() - $odata['sale_off'];
+            } else {
+                $odata['order_total'] = $this->cart->total() - $odata['sale_off']* $this->cart->total();
+            }
             $odata['date_created'] = date('Y-m-d');
 
             $order_id = $this->web_model->save_order_info($odata);

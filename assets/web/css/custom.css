@@ -723,6 +723,11 @@ h2.feature-prd {
 	  margin: 0px 10px !important;
   }
 
+  .promo-form{
+	  margin-top: 1rem !important;
+	  width: 85% !important;
+  }
+
 /* error page */
 .error-page{
 	margin-top: 100px !important;

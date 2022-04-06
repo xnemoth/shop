@@ -19,7 +19,7 @@
 
                                 <div class="form-floating">
                                     <input id="customer-email" class="form-control" type="text" name="customer_email" placeholder=" " value="<?php echo $user_info->customer_email;?>"
-                                    disabled='true' ="Không thể thay đổi email đăng nhập">
+                                    disabled='true'>
                                     <label for="customer_email">Email</label>
                                 </div>
                             </td>

@@ -163,6 +163,16 @@ class Web_Model extends CI_Model
         return $this->db->update('tbl_customer', $data);
     }
 
+    public function get_promo_value($data)
+    {
+        $this->db->select('promo_value');
+        $this->db->from('tbl_promo');
+        $this->db->where('tbl_promo.promo_code', $data);
+        $this->db->where('tbl_promo.active_code', 1);
+        $info = $this->db->get();
+        return $info->row();
+    }
+
     public function save_order_info($data)
     {
         $this->db->insert('tbl_order', $data);

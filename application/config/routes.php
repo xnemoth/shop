@@ -14,6 +14,7 @@ $route['cart']                = 'web/cart';
 $route['save/cart']           = 'web/save_cart';
 $route['update/cart']         = 'web/update_cart';
 $route['remove/cart']         = 'web/remove_cart';
+$route['get/promo']         = 'web/get_promo';
 $route['user_form']           = 'web/user_form';
 $route['get/category/(:num)'] = 'web/category_post/$1';
 $route['get/brand/(:num)'] = 'web/brand_post/$1';

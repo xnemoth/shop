@@ -5,7 +5,7 @@
                 <div class="card bg-primary text-white cart-header-box">
                     <div class="card-body cart-header" style="font-weight: bold;">
                         <h2 class="content-product-block">
-                        <img src="<?php echo base_url() ?>assets/web/images/carts.png" alt="carts" width="30px"></img> Giỏ hàng
+                            <img src="<?php echo base_url() ?>assets/web/images/carts.png" alt="carts" width="30px"></img> Giỏ hàng
                         </h2>
                     </div>
                 </div>
@@ -52,60 +52,93 @@
                     </table>
                     <table style="float:right;text-align:left;" width="40%">
                         <tr>
+                            <th></th>
                             <th>Tổng cộng : </th>
                             <td><?php echo $this->cart->format_number($this->cart->total()) ?> ₫</td>
                         </tr>
                         <tr>
-                            <th>Giảm giá : </th>
+                            <th></th>
+                            <th>
+                                <form action="<?php echo base_url('get/promo'); ?>" method="post">
+                                    <div class="input-group mb-3 promo-form">
+                                        <input type="text" class="form-control" name="promo_code" placeholder="Mã giảm giá">
+                                        <button class="btn btn-success" type="submit">Chọn</button>
+                                    </div>
+                                </form>
+                            </th>
                             <td>
                                 <?php
-                                $total = $this->cart->total();
-                                $tax = ($total * 15) / 100;
-                                echo $this->cart->format_number($tax);
-                                ?> ₫
+                                $sale_value = $this->session->flashdata('promo_value');
+                                if (!$sale_value) {
+                                    echo '0 ₫';
+                                    $total_oder = $this->cart->format_number($this->cart->total());
+                                } else if ($sale_value > 100) {
+                                    echo $sale_value . ' ₫';
+                                    $total_oder = $this->cart->format_number($this->cart->total() - $sale_value);
+                                } else {
+                                    echo $sale_value . ' %';
+                                    $total_oder = $this->cart->format_number($this->cart->total() - $sale_value/100 * $this->cart->total());
+                                }
+                                ?>
                             </td>
                         </tr>
                         <tr>
+                            <th></th>
                             <th>Thành tiền :</th>
-                            <td><?php echo $this->cart->format_number($tax + $this->cart->total()); ?> ₫ </td>
+                            <td>
+                                <?php
+                                echo  $total_oder ?> ₫
+                            </td>
                         </tr>
                     </table>
                 <?php
                 } else { ?>
-                <div class="empty-cart-noti">
-                    <h2>Trống rỗng rồi</h2>
-                    <p><img src="<?php echo base_url() ?>assets/web/images/empty-cart.png" alt="Empty" width="200px"></img></p>
-                </div>
+                    <div class="empty-cart-noti">
+                        <h2>Trống rỗng rồi</h2>
+                        <p><img src="<?php echo base_url() ?>assets/web/images/empty-cart.png" alt="Empty" width="200px"></img></p>
+                    </div>
                 <?php }
                 ?>
             </div>
             <div class="shopping">
                 <div class="shopleft">
-                    <h2><p>Tiếp tục mua hàng</p></h2>
+                    <h2>
+                        <p>Tiếp tục mua hàng</p>
+                    </h2>
                     <a href="<?php echo base_url('product') ?>"><img src="<?php echo base_url() ?>assets/web/images/cat-shopping.png" alt="Tiếp tục mua hàng" /></a>
                 </div>
                 <div class="shopright">
                     <?php
                     $customer_id = $this->session->userdata('customer_id');
-                    if ($this->cart->total_items()){
-                    if (empty($customer_id)) {
+                    if ($this->cart->total_items()) {
+                        if (empty($customer_id)) {
                     ?>
-                    <h2><p>Đăng nhập để đặt hàng<p></h2>
-                        <p><a href="<?php echo base_url('/customer/login') ?>"> <img src="<?php echo base_url() ?>assets/web/images/checkout.png" alt="Thanh toán" /></a></p>
-                    <?php
-                    } elseif (!empty($customer_id)) {
-                    ?>
-                    <h2><p>Hoàn tất đặt hàng</p></h2>
-                        <p><a href="<?php echo base_url('customer/shipping') ?>"> <img src="<?php echo base_url() ?>assets/web/images/checkout.png" alt="Thanh toán" /></a></p>
-                    <?php
-                    }
-                }else {
-                    ?>
-                    <style type="text/css">
-                        .shopleft{width: 100% !important;}
-                        .shopright{display: hidden;}
-                    </style>
-                    <?php }?>
+                            <h2>
+                                <p>Đăng nhập để đặt hàng
+                                <p>
+                            </h2>
+                            <p><a href="<?php echo base_url('/customer/login') ?>"> <img src="<?php echo base_url() ?>assets/web/images/checkout.png" alt="Thanh toán" /></a></p>
+                        <?php
+                        } elseif (!empty($customer_id)) {
+                        ?>
+                            <h2>
+                                <p>Hoàn tất đặt hàng</p>
+                            </h2>
+                            <p><a href="<?php echo base_url('customer/shipping') ?>"> <img src="<?php echo base_url() ?>assets/web/images/checkout.png" alt="Thanh toán" /></a></p>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <style type="text/css">
+                            .shopleft {
+                                width: 100% !important;
+                            }
+
+                            .shopright {
+                                display: hidden;
+                            }
+                        </style>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -115,7 +148,7 @@
 <script type="text/javascript">
     let rmAction = document.getElementById('rmAction');
     let rmForm = document.getElementById('rmCols');
-    rmAction.addEventListener("click", function(){
+    rmAction.addEventListener("click", function() {
         rmForm.classList.toggle('hidden');
     });
 </script>
