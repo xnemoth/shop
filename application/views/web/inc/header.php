@@ -119,8 +119,8 @@
             <div class="header_bottom">
                 <div class="header_bottom_left">
                     <div class="logo">
-                        <img src="<?php echo base_url('uploads/'); ?><?php echo get_option('site_logo'); ?>" alt="nemoth">
-                        <a href="<?php echo base_url('/'); ?>"></a>
+                    <a href="<?php echo base_url('/'); ?>"><img src="<?php echo base_url('uploads/'); ?><?php echo get_option('site_logo'); ?>" alt="nemoth">
+                        </a>
                     </div>
                     <div class="search-bar">
                         <div class="search_box">

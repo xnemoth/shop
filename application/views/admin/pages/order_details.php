@@ -111,7 +111,7 @@
                             <td><?php
                                 $sale = $this->cart->format_number($order_info->sale_off);
                                 $total = $this->cart->format_number($order_info->order_total);
-                                echo $total;
+                                echo $total . ' ₫';
                                 ?>
                         </tr>
                         <tr>
@@ -120,8 +120,10 @@
                         </tr>
                         <tr>
                             <td colspan="5">Thanh toán</td>
-                            <td><?php if ($sale > 100) {
-                                    echo $total - $sale;
+                            <td><?php 
+
+                            if ($sale > 100) {
+                                    echo ($total < $sale ) ? ($total - $sale) : 0;
                                 } else {
                                     echo $total - ($sale / 100) * $total;
                                 } ?> </td>

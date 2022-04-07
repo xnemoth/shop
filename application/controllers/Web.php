@@ -255,10 +255,13 @@ class Web extends CI_Controller
 
         $data['customer_name']     = $this->input->post('customer_name');
         if ($this->input->post('customer_password') !== "") {
-            $check_data['customer_old_pwd'] =  md5($this->input->post('customer_password'));
+            $check_data['customer_password'] =  md5($this->input->post('customer_password'));
             $this->form_validation->set_rules('customer_new_password', 'mật khẩu', 'trim|required');
-            if ($this->web_model->get_customer_info($data)) {
+            if ($this->web_model->get_customer_info($check_data)) {
                 $data['customer_password'] = md5($this->input->post('customer_new_password'));
+            }else{
+                $this->session->set_flashdata('message', 'Mật khẩu hiện tại chưa đúng!');
+                redirect('user/info');
             }
         }
         $data['customer_address']  = $this->input->post('customer_address');

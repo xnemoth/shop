@@ -90,7 +90,11 @@
                             <th>Thành tiền :</th>
                             <td>
                                 <?php
-                                echo  $total_oder ?> ₫
+                                if($total_oder < 0){
+                                    $total_oder = 0;
+                                }
+                                    echo  $total_oder . ' ₫';
+                                ?> 
                             </td>
                         </tr>
                     </table>
