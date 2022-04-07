@@ -67,9 +67,13 @@ class Web extends CI_Controller
     {
         $data                       = array();
         $data['get_single_product'] = $this->web_model->get_single_product($id);
-        $this->load->view('web/inc/header');
-        $this->load->view('web/pages/single', $data);
-        $this->load->view('web/inc/footer');
+        if ($data['get_single_product']) {
+            $this->load->view('web/inc/header');
+            $this->load->view('web/pages/single', $data);
+            $this->load->view('web/inc/footer');
+        }else{
+            redirect('error');
+        }
     }
 
     public function error()
@@ -349,6 +353,7 @@ class Web extends CI_Controller
             $oddata = array();
 
             $myoddata = $this->cart->contents();
+            $qtt_after = array();
 
             foreach ($myoddata as $oddatas) {
 
@@ -359,6 +364,11 @@ class Web extends CI_Controller
                 $oddata['product_sales_quantity'] = $oddatas['qty'];
                 $oddata['product_image']          = $oddatas['options']['product_image'];
                 $this->web_model->save_order_details_info($oddata);
+                $qtt_after['product_quantity'] = $this->web_model->get_product_by_id($oddatas['id'])->product_quantity - $oddatas['qty'];
+                if ($qtt_after['product_quantity'] < 0) {
+                    $qtt_after['product_quantity'] = 0;
+                }
+                $this->web_model->update_product_when_buy($qtt_after, $oddatas['id']);
             }
 
             $this->cart->destroy();

@@ -69,16 +69,18 @@
                             <td>
                                 <?php
                                 $sale_value = $this->session->flashdata('promo_value');
-                                $this->session->set_userdata('sale_off', $sale_value);
                                 if (!$sale_value) {
                                     echo '0 ₫';
                                     $total_oder = $this->cart->format_number($this->cart->total());
+                                    $this->session->set_userdata('sale_off', 0);
                                 } else if ($sale_value > 100) {
                                     echo $sale_value . ' ₫';
                                     $total_oder = $this->cart->format_number($this->cart->total() - $sale_value);
+                                    $this->session->set_userdata('sale_off', $sale_value);
                                 } else {
                                     echo $sale_value . ' %';
                                     $total_oder = $this->cart->format_number($this->cart->total() - $sale_value/100 * $this->cart->total());
+                                    $this->session->set_userdata('sale_off', $sale_value);
                                 }
                                 ?>
                             </td>

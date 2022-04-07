@@ -21,7 +21,13 @@
 
                         <p><span class="price"><?php echo $this->cart->format_number($single_products->product_price) ?> ₫</span></p>
 
-                        <span class="button btn_viewprd-from-list"><button class="btn btn-primary btn-view-prdl"><a href="<?php echo base_url('product/' . $single_products->product_id); ?>" class="details">Xem</a></button></span>
+                        <span class="button btn_viewprd-from-list">
+                            <?php if($single_products->product_quantity >0) {?>
+                            <button class="btn btn-primary btn-view-prdl"><a href="<?php echo base_url('product/' . $single_products->product_id); ?>" class="details">Xem</a></button>
+                            <?php } else{?>
+                                <div class="btn btn-primary btn-view-prdl"><a href="#" class="details">Hết hàng</a></div>
+                            <?php } ?>
+                        </span>
                     </div>
                 <?php
                 }

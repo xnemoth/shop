@@ -89,7 +89,7 @@
                     </div>
                     <div class="add-cart">
                     <form action="<?php echo base_url('save/cart'); ?>" method="post">
-                        <input class="qtt-to-buy" type="number" class="buyfield" name="qty" value="1" />
+                        <input class="qtt-to-buy" type="number" class="buyfield" name="qty" value="1" min="1" max="<?php echo $get_single_product->product_quantity ?>"/>
                         <input type="hidden" class="buyfield" name="product_id" value="<?php echo $get_single_product->product_id ?>" />
                         <input type="submit" class="btn btn-primary buysubmit" name="submit" value="Mua" />
                     </form>
