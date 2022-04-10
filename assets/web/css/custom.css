@@ -379,8 +379,8 @@ html body li.active a {
 }
 
 .suggest-header li{
-	width: 70px;
-	margin: 0px 3em;
+	width: 160px;
+	margin: 0px 1em;
 	padding: 5px 0px;
 	color: var(--blue-main);
 	text-align: center;
@@ -728,6 +728,11 @@ h2.feature-prd {
   .promo-form{
 	  margin-top: 1rem !important;
 	  width: 85% !important;
+  }
+
+  .product-desc p{
+	  color: var(--clr-black) !important;
+	  font-family: var(--font-main) !important;
   }
 
 /* error page */
