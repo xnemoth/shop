@@ -39,8 +39,8 @@
                             </div>
                             <div class="text list_2_of_1">
                                 <h1><?php echo $single_popular->product_title ?></h1>
-                                <h1 style="font-size: 14px;"><?php echo $this->cart->format_number($single_popular->product_price) ?> ₫ </h1>
-                                <h2 style="font-size: 13px;">Còn lại</h2>
+                                <h1><?php echo $this->cart->format_number($single_popular->product_price) ?> ₫ </h1>
+                                <h2>Còn lại</h2>
                                 <div class="progress" style="text-align: center !important;">
                                     <div class="progress-bar bg-warning" style="width:<?php echo word_limiter($single_popular->product_quantity, 5) / 1 ?>%;">
                                         <?php echo word_limiter($single_popular->product_quantity, 5) / 1 ?>

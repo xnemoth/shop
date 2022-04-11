@@ -32,7 +32,7 @@
                                 <td><?php echo $this->cart->format_number($cart_items['price']) ?> ₫</td>
                                 <td>
                                     <form action="<?php echo base_url('update/cart'); ?>" method="post">
-                                        <input type="number" name="qty" value="<?php echo $cart_items['qty'] ?>" />
+                                        <input type="number" name="qty" value="<?php echo $cart_items['qty'] ?>" max="<?php echo $this->web_model->get_single_product($cart_items['id'])->product_quantity ?>" />
                                         <input type="hidden" name="rowid" value="<?php echo $cart_items['rowid'] ?>" />
                                         <button class="btn btn-primary" type="submit" name="submit">Cập nhật</button>
                                     </form>
