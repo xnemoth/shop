@@ -22,6 +22,20 @@ class Manageorder_Model extends CI_Model
         return $result->row();
     }
 
+    public function accept_order_by_id($id)
+    {
+        $this->db->set('actions', 1);
+        $this->db->where('order_id', $id);
+        return $this->db->update('tbl_order');
+    }
+
+    public function decline_order_by_id($id)
+    {
+        $this->db->set('actions', 0);
+        $this->db->where('order_id', $id);
+        return $this->db->update('tbl_order');
+    }
+
     public function customer_info_by_id($custoemr_id)
     {
         $this->db->select('*');

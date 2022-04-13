@@ -71,7 +71,7 @@ class Web extends CI_Controller
             $this->load->view('web/inc/header');
             $this->load->view('web/pages/single', $data);
             $this->load->view('web/inc/footer');
-        }else{
+        } else {
             redirect('error');
         }
     }
@@ -108,9 +108,35 @@ class Web extends CI_Controller
     {
         $data                    = array();
         $data['user_info'] = $this->web_model->get_self_customer_info($this->session->userdata('customer_id'));
+        $data['order_history'] = $this->web_model->get_order_history($this->session->userdata('customer_id'));
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/info', $data);
         $this->load->view('web/inc/footer');
+    }
+
+    public function delete_order($id)
+    {
+        $result = $this->web_model->delete_order_info($id);
+        if ($result == 1) {
+            $prd_back = array();
+            $all_details_of_order = $this->web_model->get_all_order_detail_by_order($id);
+            foreach ($all_details_of_order as $single_detail) {
+                $prd_back['product_id']             = $single_detail->product_id;
+                $prd_back['qtt_back']               = $single_detail->product_sales_quantity;
+                $qtt_update['product_quantity'] = $this->web_model->get_product_by_id($prd_back['product_id'])->product_quantity + $prd_back['qtt_back'];
+                $this->web_model->update_product_when_buy($qtt_update, $prd_back['product_id']);
+            }
+            $this->web_model->delete_order_details_info($id);
+            
+            $id_ship = $this->input->post('rowid');
+            $this->web_model->delete_shipping_info($id_ship);
+
+            $this->session->set_flashdata('del_ord', 'Hủy đơn hàng thành công');
+            redirect('user/info');
+        } else {
+            $this->session->set_flashdata('del_ord', 'Đơn hàng đã được xác nhận, vui lòng liên hệ shop để hủy!');
+            redirect('user/info');
+        }
     }
 
 
@@ -123,7 +149,7 @@ class Web extends CI_Controller
         $data['id']      = $results->product_id;
         $data['name']    = $results->product_title;
         $data['price']   = $results->product_price;
-        $data['qty']     = $this->input->post('qty');
+        $data['qty']     = $this->input->post('qty') >=0 ? $this->input->post('qty') : 0;
         $data['options'] = array('product_image' => $results->product_image);
 
         $this->cart->insert($data);
@@ -133,7 +159,7 @@ class Web extends CI_Controller
     public function update_cart()
     {
         $data          = array();
-        $data['qty']   = $this->input->post('qty');
+        $data['qty']   = $this->input->post('qty') >=0 ? $this->input->post('qty') : 0;
         $data['rowid'] = $this->input->post('rowid');
 
         $this->cart->update($data);
@@ -151,7 +177,9 @@ class Web extends CI_Controller
     public function get_promo()
     {
         $data = $this->web_model->get_promo_value($this->input->post('promo_code'));
-        $this->session->set_flashdata('promo_value', $data->promo_value);
+        if ($data) {
+            $this->session->set_flashdata('promo_value', $data->promo_value);
+        }
         redirect('cart');
     }
 
@@ -259,7 +287,7 @@ class Web extends CI_Controller
             $this->form_validation->set_rules('customer_new_password', 'mật khẩu', 'trim|required');
             if ($this->web_model->get_customer_info($check_data)) {
                 $data['customer_password'] = md5($this->input->post('customer_new_password'));
-            }else{
+            } else {
                 $this->session->set_flashdata('message', 'Mật khẩu hiện tại chưa đúng!');
                 redirect('user/info');
             }
@@ -300,9 +328,10 @@ class Web extends CI_Controller
         $data['shipping_email']   = $this->input->post('shipping_email');
         $data['shipping_address'] = $this->input->post('shipping_address');
         $data['shipping_phone']   = $this->input->post('shipping_phone');
+        $data['customer_id']   = $this->session->userdata('customer_id');
 
         $this->form_validation->set_rules('shipping_name', 'tên người nhận', 'trim|required');
-        $this->form_validation->set_rules('shipping_email', 'email', 'trim|required|valid_email|is_unique[tbl_shipping.shipping_email]');
+        $this->form_validation->set_rules('shipping_email', 'email', 'trim|required|valid_email[tbl_shipping.shipping_email]');
         $this->form_validation->set_rules('shipping_address', 'địa chỉ nhận hàng', 'trim|required');
         $this->form_validation->set_rules('shipping_phone', 'số điện thoại', 'trim|required');
 

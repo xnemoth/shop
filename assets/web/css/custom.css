@@ -20,6 +20,12 @@
 	padding: 0px !important;
 }
 
+.content.customer-info-content{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 1024px){
 	.wrap{
 		width: 95%;
@@ -579,6 +585,8 @@ h2.feature-prd {
 	 margin-top: 20px !important;
 	 display: flex;
 	 justify-content: center;
+	 flex-direction: column;
+	 align-items: center;
 }
 
 .customer-register-success{
@@ -949,4 +957,13 @@ h2.feature-prd {
 .order-success {
 	margin-bottom: 5% !important;
 	margin-top: 20% !important;
+}
+
+/* customer info */
+.order-history table{
+	border: 1px solid var(--main-clr)
+}
+
+.order-history > table th,td{
+	text-align: center;
 }

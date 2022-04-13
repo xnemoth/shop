@@ -109,24 +109,24 @@
                         <tr>
                             <td colspan="5">Tổng cộng</td>
                             <td><?php
-                                $sale = $this->cart->format_number($order_info->sale_off);
-                                $total = $this->cart->format_number($order_info->order_total);
-                                echo $total . ' ₫';
+                                $sale =  str_replace(',', '',$this->cart->format_number($order_info->sale_off));
+                                $total = str_replace(',', '', $this->cart->format_number($order_info->order_total));
+                                
+                                echo $this->cart->format_number($total) . ' ₫';
                                 ?>
                         </tr>
                         <tr>
                             <td colspan="5">Giảm giá</td>
-                            <td><?php echo $sale < 100 ? $sale . ' %' : $sale . ' ₫'; ?> </td>
+                            <td><?php echo $sale < 100 ? $sale . ' %' : $this->cart->format_number($sale) . ' ₫'; ?> </td>
                         </tr>
                         <tr>
                             <td colspan="5">Thanh toán</td>
                             <td><?php 
-
                             if ($sale > 100) {
-                                    echo ($total < $sale ) ? ($total - $sale) : 0;
+                                    echo (intval($total) > intval($sale) ) ? $this->cart->format_number((intval($total) - $sale)) : 0;
                                 } else {
-                                    echo $total - ($sale / 100) * $total;
-                                } ?> </td>
+                                    echo $this->cart->format_number(intval($total) - (($sale / 100) * intval($total))) . ' ₫';
+                                }?> </td>
                         </tr>
                     </tfooter>
                 </table>

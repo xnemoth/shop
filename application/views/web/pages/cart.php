@@ -32,7 +32,7 @@
                                 <td><?php echo $this->cart->format_number($cart_items['price']) ?> ₫</td>
                                 <td>
                                     <form action="<?php echo base_url('update/cart'); ?>" method="post">
-                                        <input type="number" name="qty" value="<?php echo $cart_items['qty'] ?>" max="<?php echo $this->web_model->get_single_product($cart_items['id'])->product_quantity ?>" />
+                                        <input type="number" name="qty" value="<?php echo $cart_items['qty'] ?>" min="0" max="<?php echo $this->web_model->get_single_product($cart_items['id'])->product_quantity ?>" />
                                         <input type="hidden" name="rowid" value="<?php echo $cart_items['rowid'] ?>" />
                                         <button class="btn btn-primary" type="submit" name="submit">Cập nhật</button>
                                     </form>
@@ -73,14 +73,14 @@
                                     echo '0 ₫';
                                     $total_oder = $this->cart->format_number($this->cart->total());
                                     $this->session->set_userdata('sale_off', 0);
-                                } else if ($sale_value > 100) {
-                                    echo $sale_value . ' ₫';
-                                    $total_oder = $this->cart->format_number($this->cart->total() - $sale_value);
-                                    $this->session->set_userdata('sale_off', $sale_value);
+                                } else if (intval($sale_value) > 100) {
+                                    echo intval($sale_value) . ' ₫';
+                                    $total_oder = $this->cart->format_number($this->cart->total() - intval($sale_value));
+                                    $this->session->set_userdata('sale_off', intval($sale_value));
                                 } else {
-                                    echo $sale_value . ' %';
-                                    $total_oder = $this->cart->format_number($this->cart->total() - $sale_value/100 * $this->cart->total());
-                                    $this->session->set_userdata('sale_off', $sale_value);
+                                    echo intval($sale_value) . ' %';
+                                    $total_oder = $this->cart->format_number($this->cart->total() - intval($sale_value)/100 * $this->cart->total());
+                                    $this->session->set_userdata('sale_off', intval($sale_value));
                                 }
                                 ?>
                             </td>

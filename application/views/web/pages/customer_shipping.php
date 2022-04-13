@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" style="margin-bottom: 10px;">
     <div class="content" style="text-align: center">
         <div class="register_account shipping-info" style="text-align:center;display:inline-block;float: none">
             <h1>Địa chỉ giao hàng</h1>

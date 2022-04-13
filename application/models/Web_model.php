@@ -45,7 +45,7 @@ class Web_Model extends CI_Model
         return $info->result();
     }
 
-    public function get_all_product_pagi($limit,$offset)
+    public function get_all_product_pagi($limit, $offset)
     {
         $this->db->select('*');
         $this->db->from('tbl_product');
@@ -54,7 +54,7 @@ class Web_Model extends CI_Model
         $this->db->order_by('tbl_product.product_id', 'DESC');
         $this->db->where('tbl_product.publication_status', 1);
         $this->db->where("tbl_product.product_quantity > 0");
-        $this->db->limit($limit,$offset);
+        $this->db->limit($limit, $offset);
         $info = $this->db->get();
         return $info->result();
     }
@@ -81,7 +81,7 @@ class Web_Model extends CI_Model
         $info = $this->db->get();
         return $info->result();
     }
-    
+
     public function get_all_brand()
     {
         $this->db->select('*');
@@ -106,7 +106,7 @@ class Web_Model extends CI_Model
         $info = $this->db->get();
         return $info->result();
     }
- 
+
     public function get_all_product_by_brand($id)
     {
         $this->db->select('*');
@@ -171,10 +171,58 @@ class Web_Model extends CI_Model
         return $info->row();
     }
 
+    public function get_order_history($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->join('tbl_shipping', 'tbl_shipping.shipping_id=tbl_order.shipping_id');
+        $this->db->where('tbl_order.customer_id', $id);
+        $info = $this->db->get();
+        return $info->result();
+    }
+
     public function update_self_customer_info($data, $id)
     {
         $this->db->where('customer_id', $id);
         return $this->db->update('tbl_customer', $data);
+    }
+
+    public function delete_order_info($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_order');
+        $this->db->where('order_id', $id);
+        $this->db->where('actions', 0);
+        $info = $this->db->get();
+        if ($info->num_rows()) {
+            $this->db->where('order_id', $id);
+            $this->db->where('actions', 0);
+            $this->db->delete('tbl_order');
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function get_all_order_detail_by_order($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_order_details');
+        $this->db->where('tbl_order_details.order_id', $id);
+        $info = $this->db->get();
+        return $info->result();
+    }
+
+    public function delete_order_details_info($id)
+    {
+        $this->db->where('order_id', $id);
+        return $this->db->delete('tbl_order_details');
+    }
+
+    public function delete_shipping_info($id)
+    {
+        $this->db->where('shipping_id', $id);
+        return $this->db->delete('tbl_shipping');
     }
 
     public function get_promo_value($data)
@@ -235,5 +283,4 @@ class Web_Model extends CI_Model
         $info = $this->db->get();
         return $info->result();
     }
-
 }

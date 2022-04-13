@@ -34,11 +34,12 @@ $route['congrat']                        = 'web/payment';
 $route['save/order']                     = 'web/save_order';
 $route['user/info']                    = 'web/customer_info';
 $route['user/update/info']                    = 'web/customer_update_info';
+$route['user/delete/order/(:num)']      = 'web/delete_order/$1';
 
 //Admin Panel Route
 $route['dashboard']            = 'admin/index';
-$route['manage/order']         = 'manageorder/manage_order';
-$route['order/details/(:num)'] = 'manageorder/order_details/$1';
+$route['manage/order']         = 'manageOrder/manage_order';
+$route['order/details/(:num)'] = 'manageOrder/order_details/$1';
 
 //Category  Route List
 $route['add/category']                = 'category/add_category';
@@ -71,8 +72,8 @@ $route['published/product/(:num)']   = 'product/published_product/$1';
 $route['unpublished/product/(:num)'] = 'product/unpublished_product/$1';
 
 //Admin login
-$route['admin']             = 'adminlogin';
-$route['admin_login_check'] = 'adminlogin/admin_login_check';
+$route['admin']             = 'adminLogin';
+$route['admin_login_check'] = 'adminLogin/admin_login_check';
 $route['logout']            = 'admin/logout';
 
 //Slider  Route List
@@ -100,3 +101,8 @@ $route['delete/promo/(:num)']      = 'promo/delete_promo/$1';
 //Theme Option  Route List
 $route['theme/option'] = 'themeoption';
 $route['save/option']  = 'themeoption/save_option';
+
+
+//Order
+$route['accept/order/(:num)']   = 'manageOrder/accept_order/$1';
+$route['decline/order/(:num)'] = 'manageOrder/decline_order/$1';

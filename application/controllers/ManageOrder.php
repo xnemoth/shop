@@ -35,6 +35,30 @@ class ManageOrder extends CI_Controller
         $this->load->view('admin/master', $data);
     }
 
+    public function accept_order($id)
+    {
+        $result = $this->manageorder_model->accept_order_by_id($id);
+        if ($result) {
+            $this->session->set_flashdata('message', 'Xác nhận đơn hàng thành công');
+            redirect('manage/order');
+        } else {
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
+            redirect('manage/order');
+        }
+    }
+
+    public function decline_order($id)
+    {
+        $result = $this->manageorder_model->decline_order_by_id($id);
+        if ($result) {
+            $this->session->set_flashdata('message', 'Hủy xác nhận thành công');
+            redirect('manage/order');
+        } else {
+            $this->session->set_flashdata('message', 'Có lỗi xảy ra vui lòng thử lại');
+            redirect('manage/order');
+        }
+    }
+
     public function get_user()
     {
 
