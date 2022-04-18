@@ -82,7 +82,7 @@
                         <span class="icon">
                             <ion-icon name="cart-outline"></ion-icon>
                         </span>
-                        <span class="text">Giỏ hàng<span class="no_product badge bg-primary">&nbsp; <?php echo $this->cart->total_items(); ?></span></span>
+                        <span class="text">Giỏ hàng<span class="no_product badge bg-primary"> <?php echo $this->cart->total_items(); ?></span></span>
                     </a>
                 </li>
                 <li class="list" style="--clr:#1a94ff;">
@@ -133,11 +133,6 @@
                         </div>
                         <div class="suggest-header">
                             <ul>
-                                <?php
-                                    $get_all_category = $this->web_model->get_all_category();
-                                    foreach ($get_all_category as $single_category) { ?>
-                                    <li><a href="<?php echo base_url('get/category/' . $single_category->id); ?>"><?php echo $single_category->category_name ?></a></li>
-                                <?php } ?>
                                 <?php 
                                     $get_all_brand = $this->web_model->get_all_brand();
                                     foreach ($get_all_brand as $single_brand) { ?>
@@ -147,5 +142,3 @@
                         </div>
                     </div>
                 </div>
-
-                <script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/custom.js"></script>

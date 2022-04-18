@@ -1,4 +1,4 @@
-<div class="main customer-register-main">
+<div class="main customer-register-main" style="margin-bottom: 10px;">
     <div class="content" style="text-align: center">
         <div class="register_account">
             <h1>Cửa hàng nemoth</h1>

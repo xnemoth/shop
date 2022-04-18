@@ -60,5 +60,6 @@
         });
     });
 </script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/web/js/custom.js"></script>
 </body>
 </html>

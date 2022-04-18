@@ -56,8 +56,20 @@ class Web extends CI_Controller
 
         $this->pagination->initialize($config);
 
+        if (isset($_GET['brd'])) {
+            $brd = $_GET['brd'];
+        } else {
+            $brd = null;
+        }
+
+        if (isset($_GET['prc'])) {
+            $prc = $_GET['prc'];
+        } else {
+            $prc = 999999999;
+        }
+
         $data                    = array();
-        $data['get_all_product'] = $this->web_model->get_all_product_pagi($config['per_page'], $this->uri->segment('3'));
+        $data['get_all_product'] = $this->web_model->get_all_product_pagi($config['per_page'], $this->uri->segment('3'), $brd, $prc);
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/product', $data);
         $this->load->view('web/inc/footer');
@@ -87,8 +99,24 @@ class Web extends CI_Controller
     public function category_post($id)
     {
         $this->load->library('pagination');
+
         $data                    = array();
-        $data['get_all_product'] = $this->web_model->get_all_product_by_cat($id);
+
+        if (isset($_GET['brd'])) {
+            $brd = $_GET['brd'];
+        } else {
+            $brd = null;
+        }
+
+        if (isset($_GET['prc'])) {
+            $prc = $_GET['prc'];
+        } else {
+            $prc = 999999999;
+        }
+
+        $data['get_all_product'] = $this->web_model->get_all_product_by_cat($id, $brd, $prc);
+
+        $data['categ_name'] = $this->web_model->get_cat_name($id);
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/product', $data);
         $this->load->view('web/inc/footer');
@@ -98,7 +126,18 @@ class Web extends CI_Controller
     {
         $this->load->library('pagination');
         $data                    = array();
-        $data['get_all_product'] = $this->web_model->get_all_product_by_brand($id);
+        if (isset($_GET['prc'])) {
+            $prc = $_GET['prc'];
+        } else {
+            $prc = 999999999;
+        }
+
+        if (isset($_GET['brd'])) {
+            $id = $_GET['brd'];
+        }
+
+        $data['get_all_product'] = $this->web_model->get_all_product_by_brand($id, $prc);
+        $data['brd_name'] = $this->web_model->get_brd_name($id);
         $this->load->view('web/inc/header');
         $this->load->view('web/pages/product', $data);
         $this->load->view('web/inc/footer');
@@ -127,7 +166,7 @@ class Web extends CI_Controller
                 $this->web_model->update_product_when_buy($qtt_update, $prd_back['product_id']);
             }
             $this->web_model->delete_order_details_info($id);
-            
+
             $id_ship = $this->input->post('rowid');
             $this->web_model->delete_shipping_info($id_ship);
 
@@ -149,7 +188,7 @@ class Web extends CI_Controller
         $data['id']      = $results->product_id;
         $data['name']    = $results->product_title;
         $data['price']   = $results->product_price;
-        $data['qty']     = $this->input->post('qty') >=0 ? $this->input->post('qty') : 0;
+        $data['qty']     = $this->input->post('qty') >= 0 ? $this->input->post('qty') : 0;
         $data['options'] = array('product_image' => $results->product_image);
 
         $this->cart->insert($data);
@@ -159,7 +198,7 @@ class Web extends CI_Controller
     public function update_cart()
     {
         $data          = array();
-        $data['qty']   = $this->input->post('qty') >=0 ? $this->input->post('qty') : 0;
+        $data['qty']   = $this->input->post('qty') >= 0 ? $this->input->post('qty') : 0;
         $data['rowid'] = $this->input->post('rowid');
 
         $this->cart->update($data);

@@ -45,7 +45,7 @@ class Web_Model extends CI_Model
         return $info->result();
     }
 
-    public function get_all_product_pagi($limit, $offset)
+    public function get_all_product_pagi($limit, $offset, $brd, $prc)
     {
         $this->db->select('*');
         $this->db->from('tbl_product');
@@ -53,6 +53,13 @@ class Web_Model extends CI_Model
         $this->db->join('tbl_brand', 'tbl_brand.brand_id=tbl_product.product_brand');
         $this->db->order_by('tbl_product.product_id', 'DESC');
         $this->db->where('tbl_product.publication_status', 1);
+        if ($brd != null) {
+            $this->db->where('tbl_product.product_brand', $brd);
+        }
+
+        if ($prc != null) {
+            $this->db->where('tbl_product.product_price <', $prc);
+        }
         $this->db->where("tbl_product.product_quantity > 0");
         $this->db->limit($limit, $offset);
         $info = $this->db->get();
@@ -77,7 +84,6 @@ class Web_Model extends CI_Model
         $this->db->from('tbl_category');
         $this->db->where('publication_status', 1);
         $this->db->order_by('tbl_category.id', 'DESC');
-        $this->db->limit(3);
         $info = $this->db->get();
         return $info->result();
     }
@@ -88,12 +94,22 @@ class Web_Model extends CI_Model
         $this->db->from('tbl_brand');
         $this->db->order_by('tbl_brand.brand_id', 'DESC');
         $this->db->where('publication_status', 1);
-        $this->db->limit(3);
+        $this->db->limit(6);
         $info = $this->db->get();
         return $info->result();
     }
 
-    public function get_all_product_by_cat($id)
+    public function get_full_brand()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_brand');
+        $this->db->order_by('tbl_brand.brand_id', 'DESC');
+        $this->db->where('publication_status', 1);
+        $info = $this->db->get();
+        return $info->result();
+    }
+
+    public function get_all_product_by_cat($id, $brd, $prc)
     {
         $this->db->select('*');
         $this->db->from('tbl_product');
@@ -101,13 +117,38 @@ class Web_Model extends CI_Model
         $this->db->join('tbl_brand', 'tbl_brand.brand_id=tbl_product.product_brand');
         $this->db->order_by('tbl_product.product_id', 'DESC');
         $this->db->where('tbl_product.publication_status', 1);
+        if ($brd != null) {
+            $this->db->where('tbl_product.product_brand', $brd);
+        }
+
+        if ($prc != null) {
+            $this->db->where('tbl_product.product_price <', $prc);
+        }
         $this->db->where("tbl_product.product_quantity > 0");
         $this->db->where('tbl_category.id', $id);
         $info = $this->db->get();
         return $info->result();
     }
 
-    public function get_all_product_by_brand($id)
+    public function get_cat_name($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_category');
+        $this->db->where('id', $id);
+        $info = $this->db->get();
+        return $info->row();
+    }
+
+    public function get_brd_name($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_brand');
+        $this->db->where('brand_id', $id);
+        $info = $this->db->get();
+        return $info->row();
+    }
+
+    public function get_all_product_by_brand($id, $prc)
     {
         $this->db->select('*');
         $this->db->from('tbl_product');
@@ -115,6 +156,9 @@ class Web_Model extends CI_Model
         $this->db->join('tbl_category', 'tbl_category.id=tbl_product.product_category');
         $this->db->order_by('tbl_product.product_id', 'DESC');
         $this->db->where('tbl_product.publication_status', 1);
+        if ($prc != null) {
+            $this->db->where('tbl_product.product_price <', $prc);
+        }
         $this->db->where("tbl_product.product_quantity > 0");
         $this->db->where('tbl_brand.brand_id', $id);
         $info = $this->db->get();
@@ -199,7 +243,7 @@ class Web_Model extends CI_Model
             $this->db->where('actions', 0);
             $this->db->delete('tbl_order');
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }

@@ -1,4 +1,4 @@
-<div class="main customer-login-main">
+<div class="main customer-login-main" style="margin-bottom: 10px;">
     <div class="content" style="text-align: center">
         <div class="login_panel">
             <h1>Cửa hàng nemoth</h1>
