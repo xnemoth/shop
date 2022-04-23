@@ -55,7 +55,7 @@
                         
                         <div class="form-actions custom-panel-button">
                             <button type="submit" id="save_category" class="btn btn-primary custom-admin-btn">Cập nhật</button>
-                            <button type="reset" class="btn btn-primary custom-admin-btn">Hủy bỏ</button>
+                            <a href="<?php echo base_url('manage/category') ?>"><button type="button" class="btn btn-primary custom-admin-btn">Hủy bỏ</button></a>
                         </div>
                     </fieldset>
                 </form>   

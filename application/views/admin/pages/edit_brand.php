@@ -57,7 +57,7 @@
                         
                         <div class="form-actions custom-panel-button">
                             <button type="submit" class="btn btn-primary custom-admin-btn">Cập nhật</button>
-                            <button type="reset" class="btn custom-admin-btn">Hủy bỏ</button>
+                            <a href="<?php echo base_url('manage/brand') ?>"><button type="button" class="btn custom-admin-btn">Hủy bỏ</button></a>
                         </div>
                     </fieldset>
                 </form>   

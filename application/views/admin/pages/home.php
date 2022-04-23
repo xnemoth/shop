@@ -63,12 +63,15 @@
         <a  id="totalincome" class="quick-button metro black span3 metro-custom">
             <i class="icon-money"></i>
             <?php 
-            if(!isset($_POST["date_create"]) || $_POST["date_create"] == '') {
-                $temp = '';
-            }else{
+            if(!isset($_POST["date_create"])) {
+                $date = str_replace('/', '-', date('Y/m/d'));
+                $temp = ' WHERE date_created LIKE "' . $date . '"';
+            }else if(isset($_POST["date_create"]) && $_POST["date_create"] != ''){
                 $date = str_replace('/', '-', $_POST["date_create"]);
                 $temp = ' WHERE date_created LIKE "' . $date . '"';
                 unset($_POST["date_create"]);
+            }else if(isset($_POST["date_create"]) && $_POST["date_create"] == ''){
+                $temp = '';
             }
             ?>
             <h1><?php $query = $this->db->query('SELECT SUM( order_total) as total FROM tbl_order' . $temp . ';')->row();
