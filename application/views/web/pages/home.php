@@ -47,7 +47,7 @@
         <div class="card bg-primary text-white">
             <div class="card-body" style="font-weight: bold;">
                 <h2 class="content-product-block">
-                <ion-icon name="paper-plane"></ion-icon> Tin tức
+                    <ion-icon name="paper-plane"></ion-icon> Tin tức
                 </h2>
             </div>
         </div>
@@ -59,17 +59,30 @@
             $news = $html->find('.jeg_post.jeg_pl_lg_2.format-standard');
             ?>
             <ul class="news-list" style="list-style:none;">
-            <?php
-            for($i = 1; $i <= 6; $i++) {
-            ?>
+                <?php
+                for ($i = 1; $i <= 6; $i++) {
+                ?>
                     <li class="news-list-item">
                         <div class="news-img"><a href="<?= $news[$i]->first_child()->children(0)->href ?>"><?= $news[$i]->first_child()->children(0)->innertext ?></a></div>
-                        <div class="news-title"><p><?= $news[$i]->children(1)->first_child()->innertext ?></p><p><?= $news[$i]->children(1)->children(2)->first_child()->plaintext ?></p></div>
+                        <div class="news-title">
+                            <p><?= $news[$i]->children(1)->first_child()->innertext ?></p>
+                            <p class="news-long-desc"><?= $news[$i]->children(1)->children(2)->first_child()->plaintext ?></p>
+                        </div>
                     </li>
-            <?php } ?>
+                <?php } ?>
             </ul>
         </div>
-        <div class="more-news">Xem them</div>
+        <div class="more-news"><a href="<?php echo base_url('news') ?>">Xem thêm</a></div>
     </div>
+    <script type="text/javascript">
+        function newsLinks(){
+        let sglinks = document.querySelectorAll('.news-list-item a');
+        Array.prototype.forEach.call(sglinks, function(link) {
+            link.setAttribute("target", "_blank");
+            link.style.textDecoration = "none";
+        });
+    }
+    newsLinks();
+    </script>
 </div>
 </div>

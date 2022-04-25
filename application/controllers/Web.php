@@ -474,6 +474,20 @@ class Web extends CI_Controller
         }
     }
 
+    public function news_post()
+    {
+        $this->load->view('web/inc/header');
+        $this->load->view('web/pages/news');
+        $this->load->view('web/inc/footer');
+    }
+
+    public function load_more_news()
+    {
+        $data= array();
+        $data['Page'] = $this->input->get('Page');
+        $this->load->view('web/pages/morenews', $data);
+    }
+
     public function logout()
     {
         $this->session->unset_userdata('customer_id');

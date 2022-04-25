@@ -18,6 +18,7 @@ $route['get/promo']         = 'web/get_promo';
 $route['user_form']           = 'web/user_form';
 $route['get/category/(:num)'] = 'web/category_post/$1';
 $route['get/brand/(:num)'] = 'web/brand_post/$1';
+$route['news'] = 'web/news_post';
 
 $route['search']              = 'web/search';
 $route['customer/register']   = 'web/customer_register';
